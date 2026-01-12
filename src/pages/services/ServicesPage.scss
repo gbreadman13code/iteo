@@ -1,0 +1,40 @@
+@import '@/app/styles/variables';
+
+.services-page {
+  padding: 40px;
+
+  h1 {
+    font-size: 48px;
+    margin-bottom: 40px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 800px;
+  }
+
+  &__item {
+    display: block;
+    padding: 32px;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    transition: background-color 0.2s;
+    
+    &:hover {
+      background-color: #fafafa;
+    }
+
+    &-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    &-desc {
+      font-size: 16px;
+      color: #666;
+    }
+  }
+}

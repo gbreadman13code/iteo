@@ -1,0 +1,222 @@
+
+@use '@/app/styles/variables' as *;
+@use '@/app/styles/mixins' as *;
+
+.contacts-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-top: 140px; // Approx height for header space
+  background-color: #f7f7f7; // Light background based on top of screenshot
+
+  @include mobile {
+    padding-top: 30px;
+  }
+  
+
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; // Allow map to wrap to next line
+    padding: 0 40px;
+    margin-bottom: 80px;
+    width: 100%;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include mobile {
+      flex-direction: column;
+      gap: 0; // managing gap via margins for specific elements
+      padding: 0 20px;
+      margin-bottom: 0; // bottom is handled by legal margin
+    }
+  }
+
+  &__section {
+    font-family: $font-family-main;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+
+    &--legal {
+      max-width: 400px;
+      
+      @include mobile {
+        order: 4;
+        max-width: 100%;
+        margin-bottom: 60px;
+        
+        // Increase font size for company name on mobile
+        .contacts-page__company-name {
+          font-size: 20px;
+          line-height: 1.3;
+        }
+      }
+    }
+
+    &--address {
+      max-width: 300px;
+      
+      @include mobile {
+        order: 1;
+        max-width: 100%;
+        margin-bottom: 24px;
+        font-size: 16px;
+      }
+    }
+
+    &--contacts {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      
+      @include mobile {
+        order: 2;
+        margin-bottom: 40px;
+
+        .contacts-page__link {
+             font-size: 16px;
+             text-decoration: underline;
+        }
+
+        .contacts-page__link--phone {
+             font-size: 24px;
+             font-weight: 700;
+             margin-top: 8px;
+             text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  &__company-name {
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #000;
+  }
+
+  &__legal-details {
+    color: #999;
+    font-size: 14px;
+    
+    p {
+      margin: 4px 0;
+    }
+  }
+
+  &__link {
+    color: #000;
+    text-decoration: underline;
+    font-weight: 500;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &--phone {
+      font-weight: 700;
+      text-decoration: none;
+    }
+  }
+
+  &__map-container {
+    width: 100%;
+    background-color: #eaeaea;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px; // Spacing from columns on desktop
+
+    @include mobile {
+        order: 3;
+        width: calc(100% + 40px); // Full bleed on mobile (compensate parent padding)
+        margin: 0 -20px 40px -20px;
+        height: 300px; // Fixed height for mobile map
+        
+        iframe {
+            height: 100%;
+        }
+    }
+  }
+
+  &__map-placeholder {
+    color: #999;
+    font-size: 24px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  &__appendix {
+    background-color: #333; // Dark background
+    color: #fff;
+    padding: 60px 40px;
+    width: 100%;
+    
+    @include mobile {
+      padding: 40px 20px;
+    }
+  }
+
+  &__appendix-content {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
+  &__appendix-title {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #ccc;
+    margin-bottom: 32px;
+    font-weight: 500;
+  }
+
+  &__documents-list {
+    display: flex;
+    gap: 60px;
+    flex-wrap: wrap;
+  }
+
+  &__document {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    text-decoration: none;
+    color: #fff;
+    max-width: 300px;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &__document-icon {
+    width: 48px;
+    height: 48px;
+    background: #4a4a4a;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__document-name {
+    font-size: 14px;
+    line-height: 1.4;
+    color: #ccc;
+    font-weight: 400;
+  }
+}

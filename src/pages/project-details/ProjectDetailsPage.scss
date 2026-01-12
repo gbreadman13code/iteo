@@ -1,0 +1,278 @@
+@use '@/app/styles/mixins' as *;
+
+.project-details-page {
+    height: calc(100vh - 105px);
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: #F4F4F4;
+
+    &__left {
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+        box-sizing: border-box;
+    }
+
+
+
+    &__title {
+        text-transform: uppercase;
+        font-size: 48px;
+        line-height: 1.1;
+        font-weight: 700;
+        margin-bottom: 8px;
+        color: #000;
+    }
+
+    &__subtitle {
+        text-transform: uppercase;
+        font-size: 24px;
+        line-height: 1.2;
+        font-weight: 400;
+        margin-bottom: 32px;
+        color: #000;
+    }
+
+    &__description {
+        font-size: 16px;
+        line-height: 1.5;
+        margin-bottom: 24px;
+        color: #000;
+    }
+
+    &__list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        
+        li {
+            position: relative;
+            padding-left: 12px;
+            margin-bottom: 8px;
+            font-size: 14px;
+            line-height: 1.4;
+            color: #555;
+
+            &::before {
+                content: "•";
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+        }
+    }
+
+    &__controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 40px;
+    }
+
+    &__back-btn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 24px;
+        border: 1px solid #000;
+        border-radius: 30px;
+        background: transparent;
+        cursor: pointer;
+        font-size: 14px;
+        text-transform: uppercase;
+        font-weight: 500;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background: #000;
+            color: #fff;
+            
+            svg {
+                stroke: #fff;
+            }
+        }
+
+        svg {
+            stroke: #000;
+            transition: stroke 0.3s ease;
+        }
+    }
+
+    &__slider-nav {
+        display: flex;
+        gap: 8px;
+
+        button {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            svg {
+                width: 20px;
+                height: 20px;
+                color: #fff;
+            }
+
+            &.prev {
+                background: #C4C4C4;
+                transform: rotate(180deg);
+                
+                &:hover {
+                    background: #b0b0b0;
+                }
+
+                @media (max-width: 768px) {
+                    transform: rotate(90deg);
+                }
+
+                &:disabled {
+                    opacity: 0.5;
+                    cursor: not-allowed;
+                }
+
+                svg {
+                     transform: rotate(180deg); // Already up-pointing in design, but my SVG was standard arrow. 
+                     // Wait, my SVG was: M1 7L7 1L13 7. That IS an Up arrow (caret).
+                     // If I rotate 180, it becomes Down.
+                     // The PREV button should move to the "previous" slide (usually up in a vertical list).
+                     // So it should point UP.
+                     // If the SVG is already up-pointing, I do NOT need to rotate it?
+                     // Let's check SVG again:
+                     // Prev SVG: d="M1 7L7 1L13 7" -> Bottom-Left to Top-Mid to Bottom-Right. This IS an UP arrow.
+                     // So NO rotation needed if it's already up.
+                     // In the previous code I had: transform: rotate(180deg) for .prev.
+                     // That implies I thought it was a down arrow.
+                     // Let's remove rotation if the SVG is already correct.
+                     // BUT, wait. If I used the SAME SVG for both, I'd need rotation.
+                     // I used DIFFERENT SVGs in index.tsx.
+                     // Prev: M1 7L7 1L13 7 (UP arrow)
+                     // Next: M1 1L7 7L13 1 (DOWN arrow)
+                     // So I should remove the rotation logic from the SCSS if the SVGs are distinct and correct.
+                }
+            }
+
+            &.next {
+                background: #000;
+
+                &:hover {
+                    background: #333;
+                }
+
+                @media (max-width: 768px) {
+                    transform: rotate(-90deg);
+                }
+
+                &:disabled {
+                    opacity: 0.5;
+                    cursor: not-allowed;
+                }
+            }
+        }
+    }
+
+    &__right {
+        height: 100vh;
+        overflow: hidden;
+        // background-color: #fff; // Removed to match design (transparent/page bg)
+        padding: 40px 40px 0 0; // Top/Right/Bottom/Left? No, "Side margins".
+        // Let's assume symmetric padding relative to the grid cell. 
+        // Left column has padding: 40px. 
+        // Right column starts at the center. 
+        // If we want the image to have space from the center line and the right edge:
+        padding: 40px; 
+        box-sizing: border-box; // Ensure padding is included in width/height
+    }
+
+    .swiper {
+        width: 100%;
+        height: 100%;
+
+        &-slide {
+            // height is calculated by Swiper because of slidesPerView
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 30px; // Rounded corners
+            overflow: hidden; // Clip image to radius
+            
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+            }
+        }
+    }
+
+    @include mobile {
+        grid-template-columns: 1fr;
+        height: auto;
+        overflow: auto;
+        padding-bottom: 40px; // Add some space at bottom
+
+        &__left {
+            padding: 20px 20px 0 20px;
+            order: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        &__content {
+            // Content follows controls
+            margin-top: 24px;
+        }
+        
+        &__title {
+            font-size: 24px; // Smaller font on mobile?
+            margin-bottom: 8px;
+        }
+
+         &__subtitle {
+            font-size: 16px;
+             margin-bottom: 24px;
+        }
+
+        &__controls {
+            margin-top: 0;
+            order: -1; // Move to top of flex container (above content)
+            justify-content: flex-start; // Align left
+            
+            // On mobile we might hide the back button if design only shows arrows
+            // But let's just keep arrows. "Back" button styling:
+        }
+
+        &__back-btn {
+            display: none; // Hiding back button based on screenshot focus on controls
+        }
+
+        &__slider-nav {
+             // No specific changes needed, buttons will just be there
+        }
+
+        &__right {
+            height: auto;
+            min-height: 250px; // Ensure slider has height
+            order: 1;
+            padding: 20px 0 0 20px; // Indent from left, flush right?
+            // "Peek" effect:
+            // If slidesPerView is 1.2, we just need padding/margin to look good.
+            // Design shows slide starting from left edge (with padding?) and going off screen.
+        }
+        
+        .swiper {
+            &-slide {
+               border-radius: 20px; // Slightly smaller radius on mobile?
+            }
+        }
+    }
+}

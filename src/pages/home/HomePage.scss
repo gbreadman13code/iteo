@@ -1,0 +1,203 @@
+@import '@/app/styles/variables';
+
+.home-page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 100%;
+
+  &__hero {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 0 40px 24px 40px;
+  }
+
+  &__visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    margin-top: -60px; // Visual correction to center visually in the available space
+  }
+
+  &__dog-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; // Base width, can be adjusted
+  }
+
+  &__dog-3d-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    // Smooth transition for rotation
+    transition: transform 0.1s ease-out;
+    transform-style: preserve-3d;
+  }
+
+  &__dog {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    z-index: 2;
+    animation: levitate 4s ease-in-out infinite;
+  }
+
+  &__shadow {
+    width: 60%;
+    height: 20px;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 70%);
+    border-radius: 50%;
+    margin-top: -30px; // Pull shadow up under the dog
+    z-index: 1;
+    animation: shadowProp 4s ease-in-out infinite;
+  }
+
+  @keyframes levitate {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes shadowProp {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(0.8);
+      opacity: 0.7;
+    }
+  }
+
+  &__video-btn {
+    position: absolute;
+    bottom: 24px;
+    left: 40px;
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+    font-family: $font-family-main;
+    font-weight: 700;
+    font-size: 14px;
+    color: $color-text-main;
+
+    .play-icon {
+      width: 48px;
+      height: 48px;
+      background: #A0CFF8; /* Light blue circle from design */
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.2s;
+
+      svg {
+        width: 16px;
+        height: 16px;
+        margin-left: 2px; // Visual correction for play triangle
+      }
+    }
+
+    &:hover .play-icon {
+      transform: scale(1.1);
+    }
+  }
+  // Loader Overlay
+
+
+  &__loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #ffffff;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow: hidden;
+  }
+
+  &__terminal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: auto;
+    
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 24px;
+    font-weight: 600;
+    color: #2F80ED;
+    text-align: left;
+  }
+
+  &__terminal-line {
+    line-height: 1.5;
+    white-space: nowrap;
+  }
+
+  &__founded {
+    position: absolute;
+    bottom: 24px;
+    right: 40px;
+    font-family: $font-family-main;
+    font-size: 14px;
+    // color: rgba(0, 0, 0, 0.4); // Subtle text
+    font-weight: 500;
+  }
+
+
+
+  &__dog-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; // Base width, can be adjusted
+    
+    // Initial levitation (always active)
+    transform: translateY(0);
+    transition: transform 1s cubic-bezier(0.34, 1.56, 0.64, 1); // Bouncy effect
+
+    &.hidden {
+      opacity: 0; // Hide but keep layout? Or absolute?
+      // Actually, we want to hide it or move it out of view.
+      // Better: Translate Y heavily up
+      transform: translateY(-100vh);
+      opacity: 0;
+      transition: none; // Instant hide
+    }
+
+    &.dropping {
+      // Logic: It transitions FROM -100vh TO 0.
+      // But we just removed the 'hidden' class, so it naturally goes effectively to default state.
+      // We need a keyframe or just transition.
+      // Since default has no extra transform, removing .hidden triggers the transition defined in &__dog-container.
+      // So we just ensure the transition property is active here.
+      opacity: 1;
+      transform: translateY(0);
+       // The transition defined above (1s cubic-bezier) handles the drop.
+    }
+  }
+  
+  @keyframes loadProgress {
+    0% { width: 0%; }
+    100% { width: 100%; }
+  }
+}

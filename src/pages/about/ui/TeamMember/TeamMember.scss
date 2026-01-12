@@ -1,0 +1,13 @@
+.team-member {
+    position: absolute;
+    bottom: 0;
+    pointer-events: none; /* Container ignores clicks */
+    
+    &__svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+        overflow: visible; /* In case image bleeds out slightly? No, we clip it. */
+        pointer-events: none; /* SVG box ignores clicks */
+    }
+}

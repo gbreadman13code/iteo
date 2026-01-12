@@ -1,0 +1,40 @@
+@import '@/app/styles/variables';
+
+.projects-page {
+  padding: 40px;
+  margin: 0 auto;
+
+  @media (max-width: 768px) {
+    margin: 0;
+  }
+  
+  h1 {
+    font-size: 48px;
+    margin-bottom: 40px;
+    font-family: inherit; /* Inherit font from global styles */
+  }
+
+  &__grid {
+    display: grid;
+    /* 
+      Grid Logic: 3 columns. 
+      First column is 2fr (double width).
+      Second and third are 1fr.
+      Effect: 1st item in row is double width of others.
+    */
+    grid-template-columns: 2fr 1fr 1fr; 
+    gap: 40px;
+
+    @media (max-width: 1024px) {
+        /* Tablet: Maybe 2 columns? Or keep 3 but smaller? 
+           User said "Mobile all in one column". 
+           Let's keep structure on tablet but maybe just adjust gap.
+        */
+    }
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr; /* Mobile: 1 column */
+      gap: 16px;
+    }
+  }
+}

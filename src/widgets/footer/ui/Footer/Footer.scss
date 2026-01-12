@@ -1,0 +1,17 @@
+@import '@/app/styles/variables';
+
+.footer {
+  padding: 24px 40px;
+  display: flex;
+  justify-content: flex-end;
+  
+  /* Assuming sticky footer or fixed bottom for simple pages */
+  width: 100%;
+  
+  &__content {
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+}
