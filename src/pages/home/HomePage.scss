@@ -13,7 +13,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    padding: 0 40px 24px 40px;
+    padding: 0 108px 24px 108px;
   }
 
   &__visual {
@@ -46,21 +46,20 @@
     height: auto;
     object-fit: contain;
     z-index: 2;
-    animation: levitate 4s ease-in-out infinite;
   }
 
   &__shadow {
     width: 60%;
     height: 20px;
-    background: radial-gradient(ellipse at center, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 70%);
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
     border-radius: 50%;
     margin-top: -30px; // Pull shadow up under the dog
     z-index: 1;
-    animation: shadowProp 4s ease-in-out infinite;
   }
 
   @keyframes levitate {
-    0%, 100% {
+    0%,
+    100% {
       transform: translateY(0);
     }
     50% {
@@ -69,7 +68,8 @@
   }
 
   @keyframes shadowProp {
-    0%, 100% {
+    0%,
+    100% {
       transform: scale(1);
       opacity: 1;
     }
@@ -97,7 +97,7 @@
     .play-icon {
       width: 48px;
       height: 48px;
-      background: #A0CFF8; /* Light blue circle from design */
+      background: #a0cff8; /* Light blue circle from design */
       border-radius: 50%;
       display: flex;
       justify-content: center;
@@ -117,7 +117,6 @@
   }
   // Loader Overlay
 
-
   &__loader {
     position: fixed;
     top: 0;
@@ -133,36 +132,59 @@
     overflow: hidden;
   }
 
-  &__terminal-content {
+  &__loader-content {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    width: auto;
-    
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 24px;
-    font-weight: 600;
-    color: #2F80ED;
-    text-align: left;
+    align-items: center;
   }
 
-  &__terminal-line {
-    line-height: 1.5;
-    white-space: nowrap;
+  &__loader-image-wrapper {
+    position: relative;
+    display: inline-block;
+  }
+
+  &__loader-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  &__loader-shadow {
+    width: 60%;
+    height: 20px;
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
+    border-radius: 50%;
+    margin-top: -10px;
+  }
+
+  &__progress-bar {
+    position: absolute;
+    top: 80%; // Позиционирование от верха - 80%
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%; // 50% от ширины картинки
+    height: 4px; // Высота бара - 4 пикселя
+    background: rgba(255, 255, 255, 0.2); // Белый с прозрачностью 20%
+    border-radius: 2px; // Скругление - 2 пикс
+    overflow: hidden;
+  }
+
+  &__progress-fill {
+    height: 100%;
+    background: #ffffff; // Белый без прозрачности
+    border-radius: 2px;
+    transition: width 0.02s linear;
   }
 
   &__founded {
     position: absolute;
-    bottom: 24px;
-    right: 40px;
+    bottom: 87px;
+    right: 108px;
     font-family: $font-family-main;
-    font-size: 14px;
+    font-size: 20px;
     // color: rgba(0, 0, 0, 0.4); // Subtle text
-    font-weight: 500;
+    font-weight: 700;
   }
-
-
 
   &__dog-container {
     position: relative;
@@ -170,34 +192,28 @@
     flex-direction: column;
     align-items: center;
     width: 100%; // Base width, can be adjusted
-    
-    // Initial levitation (always active)
-    transform: translateY(0);
-    transition: transform 1s cubic-bezier(0.34, 1.56, 0.64, 1); // Bouncy effect
 
     &.hidden {
-      opacity: 0; // Hide but keep layout? Or absolute?
-      // Actually, we want to hide it or move it out of view.
-      // Better: Translate Y heavily up
-      transform: translateY(-100vh);
       opacity: 0;
+      transform: translateY(-100vh);
       transition: none; // Instant hide
     }
 
     &.dropping {
-      // Logic: It transitions FROM -100vh TO 0.
-      // But we just removed the 'hidden' class, so it naturally goes effectively to default state.
-      // We need a keyframe or just transition.
-      // Since default has no extra transform, removing .hidden triggers the transition defined in &__dog-container.
-      // So we just ensure the transition property is active here.
       opacity: 1;
       transform: translateY(0);
-       // The transition defined above (1s cubic-bezier) handles the drop.
+      transition:
+        transform 1s cubic-bezier(0.34, 1.56, 0.64, 1),
+        opacity 0.3s ease;
     }
   }
-  
+
   @keyframes loadProgress {
-    0% { width: 0%; }
-    100% { width: 100%; }
+    0% {
+      width: 0%;
+    }
+    100% {
+      width: 100%;
+    }
   }
 }

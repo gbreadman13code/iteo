@@ -1,4 +1,4 @@
-@import "@/app/styles/variables";
+@import '@/app/styles/variables';
 
 .about-page {
   flex: 1;
@@ -8,9 +8,9 @@
 
   &__hero {
     position: relative;
-    min-height: calc(
-      100vh - 105px
-    ); /* Adjust based on header height if needed, or stick to flex 1 */
+    // min-height: calc(
+    //   100vh - 105px
+    // ); /* Adjust based on header height if needed, or stick to flex 1 */
     flex: 1;
     // display: flex;
     // align-items: flex-end; /* Align content to bottom */
@@ -30,7 +30,8 @@
     // width: 100%;
     position: absolute;
 
-    left: 100px;
+    // left: 100px;
+    top: 0px;
     z-index: 1;
     padding: 40px;
 
@@ -38,19 +39,20 @@
     flex-direction: column;
     justify-content: center;
     // align-items: center;
-    gap: 10px;
+    // gap: 10px;
 
     h3 {
       font-size: 96px;
       font-weight: 700;
       line-height: 1;
-      color: #fff; /* Assuming the image is dark or text needs contrast, wait, design shows white text on user photo? */
+      // color: #fff; /* Assuming the image is dark or text needs contrast, wait, design shows white text on user photo? */
       /* Screenshot: Text is WHITE "Привет" over the dark shirts of the team. */
-      color: #ffffff;
+      // color: #ffffff;
       mix-blend-mode: difference; /* Optional trick for visibility */
       /* Actually look at screenshot: "Привет" is WHITE. The image is B&W. */
-      color: #ffffff;
+      // color: #ffffff;
       margin-bottom: 16px;
+      text-align: center;
 
       @media (max-width: 1600px) {
         font-size: 72px;
@@ -62,18 +64,20 @@
     span {
       font-size: 24px;
       display: inline-block;
+      text-align: center;
 
-      background-color: #ffffff;
+      // background-color: #ffffff;
 
       padding: 0 5px;
     }
 
     p {
-      color: #ffffff;
+      // color: #ffffff;
       font-size: 18px;
       line-height: 1.2;
       font-weight: 400;
       /* In design text is white because it's over dark shirts */
+      text-align: center;
     }
   }
 
@@ -150,11 +154,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0),
-        rgba(0, 0, 0, 0.2)
-      );
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
 
       z-index: -1;
     }
@@ -165,12 +165,7 @@
       left: calc(50% - 800px);
       width: 1600px;
       height: 100px;
-      background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0),
-        rgba(0, 0, 0, 1),
-        rgba(0, 0, 0, 1)
-      );
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1), rgba(0, 0, 0, 1));
 
       z-index: 8;
     }

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import './HomePage.scss';
 import dogImg from '@/assets/dog.png';
+import loaderImg from '@/assets/loader.png';
 
 const HomePage = () => {
   // Check session storage on initialization to avoid flash or double render
@@ -10,32 +11,10 @@ const HomePage = () => {
   // Loader state
   const [progress, setProgress] = useState(0);
 
-  // 3D Rotation state
-  const [rotation, setRotation] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      const { innerWidth, innerHeight } = window;
-      const x = (e.clientX - innerWidth / 2) / (innerWidth / 2); // -1 to 1
-      const y = (e.clientY - innerHeight / 2) / (innerHeight / 2); // -1 to 1
-
-      // Small max rotation (e.g., 5 degrees)
-      const maxRotation = 5; 
-      
-      setRotation({
-        x: -y * maxRotation, // Invert Y for natural feel (mouse up -> rotates up/away)
-        y: x * maxRotation
-      });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
   useEffect(() => {
     if (isLoading) {
       const interval = setInterval(() => {
-        setProgress(prev => {
+        setProgress((prev) => {
           if (prev >= 100) {
             clearInterval(interval);
             return 100;
@@ -46,8 +25,8 @@ const HomePage = () => {
 
       // Trigger exit when complete
       if (progress === 100) {
-         // Small delay after 100% before closing
-         setTimeout(() => {
+        // Small delay after 100% before closing
+        setTimeout(() => {
           setIsLoading(false);
           setIsDropping(true);
           sessionStorage.setItem('iteo_intro_shown', 'true');
@@ -71,28 +50,25 @@ const HomePage = () => {
       {/* Loader Overlay */}
       {isLoading && (
         <div className="home-page__loader">
-          <div className="home-page__terminal-content">
-            <div className="home-page__terminal-line">&gt; Начинаем загрузку ITEO</div>
-            <div className="home-page__terminal-line">&gt; Загружено {progress}%</div>
-            {progress === 100 && (
-              <div className="home-page__terminal-line">&gt; Загрузка завершена успешно</div>
-            )}
+          <div className="home-page__loader-content">
+            <div className="home-page__loader-image-wrapper">
+              <img src={loaderImg} alt="Loading ITEO" className="home-page__loader-image" />
+              <div className="home-page__progress-bar">
+                <div className="home-page__progress-fill" style={{ width: `${progress}%` }} />
+              </div>
+            </div>
+            <div className="home-page__loader-shadow"></div>
           </div>
         </div>
       )}
 
       <div className="home-page__hero">
         <div className="home-page__content">
-           {/* Placeholder for the main visual (Wolf + Envelope) */}
+          {/* Placeholder for the main visual (Wolf + Envelope) */}
           <div className="home-page__visual">
             <div className={`home-page__dog-container ${isLoading ? 'hidden' : ''} ${isDropping ? 'dropping' : ''}`}>
               {/* 3D Rotation Wrapper */}
-              <div 
-                className="home-page__dog-3d-wrapper"
-                style={{
-                  transform: `perspective(1000px) rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`
-                }}
-              >
+              <div className="home-page__dog-3d-wrapper">
                 <img src={dogImg} alt="Levitating Dog" className="home-page__dog" />
               </div>
               <div className="home-page__shadow"></div>
@@ -109,9 +85,7 @@ const HomePage = () => {
           <span>Смотри Видео</span>
         </button> */}
 
-        <div className="home-page__founded">
-          компания основана в 2014
-        </div>
+        <div className="home-page__founded">компания основана в 2014</div>
       </div>
     </div>
   );

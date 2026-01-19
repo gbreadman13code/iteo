@@ -1,13 +1,13 @@
 @import '@/app/styles/variables';
 
 .projects-page {
-  padding: 40px;
+  padding: 40px 108px;
   margin: 0 auto;
 
   @media (max-width: 768px) {
     margin: 0;
   }
-  
+
   h1 {
     font-size: 48px;
     margin-bottom: 40px;
@@ -22,11 +22,11 @@
       Second and third are 1fr.
       Effect: 1st item in row is double width of others.
     */
-    grid-template-columns: 2fr 1fr 1fr; 
+    grid-template-columns: 2fr 1fr 1fr;
     gap: 40px;
 
     @media (max-width: 1024px) {
-        /* Tablet: Maybe 2 columns? Or keep 3 but smaller? 
+      /* Tablet: Maybe 2 columns? Or keep 3 but smaller? 
            User said "Mobile all in one column". 
            Let's keep structure on tablet but maybe just adjust gap.
         */

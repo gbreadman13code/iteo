@@ -1,7 +1,7 @@
-@import "@/app/styles/variables";
+@import '@/app/styles/variables';
 
 .team-slider-section {
-  --item-size: 380px;
+  --item-size: 480px;
 
   @media (min-width: 2300px) {
     --item-size: 680px;
@@ -17,7 +17,7 @@
   &__container {
     max-width: 100%;
     margin: 0 auto;
-    padding: 0 40px;
+    // padding: 0 40px;
   }
 
   &__title {
@@ -39,12 +39,11 @@
 
 .team-slider-section__text {
   height: 30%;
-  width: 50%;
+  // width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
-  align-self: end;
+  align-items: center;
 
   p,
   span {
@@ -52,6 +51,7 @@
 
     display: block;
     max-width: 500px;
+    text-align: center;
 
     @media (min-width: 2300px) {
       font-size: 24px;
@@ -112,7 +112,7 @@
 .team-slider {
   display: flex;
   overflow-x: auto;
-  gap: 20px;
+  gap: 72px;
   padding-bottom: 40px;
   scrollbar-width: none; // Hide scrollbar for Firefox
 
@@ -134,6 +134,14 @@
   display: flex;
   flex-direction: column;
   text-align: left;
+
+  &:first-child {
+    margin-left: 108px;
+  }
+
+  &:last-child {
+    margin-right: 108px;
+  }
 
   &__name {
     font-size: 24px;
@@ -162,7 +170,7 @@
   }
 
   &__role {
-    font-size: 14px;
+    font-size: 20px;
     color: #fff;
     margin: 0;
     font-weight: 400;

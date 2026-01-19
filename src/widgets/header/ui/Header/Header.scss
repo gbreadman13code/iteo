@@ -4,7 +4,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 24px 40px;
+  // padding: 24px 40px;
+  padding-top: 81px;
+  padding-left: 108px;
+  padding-right: 108px;
+  padding-bottom: 24px;
   position: fixed; /* Often headers in such designs are absolute/fixed */
   top: 0;
   left: 0;
@@ -32,18 +36,22 @@
     }
   }
 
+  @media (max-width: $tablet) {
+    padding: 25px 20px;
+  }
+
   &__logo {
     z-index: 20; /* Keep logo above menu overlay */
     position: relative;
-    
 
     a {
       display: flex;
       align-items: center;
       gap: 12px;
       color: $color-text-main;
-      
-      picture, img {
+
+      picture,
+      img {
         display: block;
       }
     }
@@ -82,7 +90,8 @@
         font-size: 18px;
       }
 
-      &:hover, &.active {
+      &:hover,
+      &.active {
         opacity: 1;
       }
     }
@@ -90,8 +99,8 @@
 
   &__socials {
     .vk-link {
-        font-weight: 700;
-        /* Placeholder styling */
+      font-weight: 700;
+      /* Placeholder styling */
     }
   }
 
@@ -141,9 +150,17 @@
       position: absolute;
       left: 0;
 
-      &:nth-child(1) { top: 0; }
-      &:nth-child(2) { top: 50%; transform: translateY(-50%); opacity: 1; }
-      &:nth-child(3) { bottom: 0; }
+      &:nth-child(1) {
+        top: 0;
+      }
+      &:nth-child(2) {
+        top: 50%;
+        transform: translateY(-50%);
+        opacity: 1;
+      }
+      &:nth-child(3) {
+        bottom: 0;
+      }
     }
 
     &.active {
@@ -179,7 +196,7 @@
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease-in-out;
-    
+
     /* Stronger backdrop blur */
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
@@ -221,7 +238,7 @@
       }
 
       &:hover {
-        background: rgba(0,0,0,0.05);
+        background: rgba(0, 0, 0, 0.05);
       }
     }
   }

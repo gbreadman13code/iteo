@@ -1,4 +1,35 @@
-import "./ContactsPage.scss";
+import './ContactsPage.scss';
+
+import itActivitiesDoc from '@/assets/docs/it_activities.docx';
+import trademarkCertDoc from '@/assets/docs/trademark_certificate.pdf';
+import techStackDoc from '@/assets/docs/tech_stack.docx';
+
+const DocumentIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M14 2H6C4.9 2 4 2.9 4 4V20C4 21.1 4.9 22 6 22H18C19.1 22 20 21.1 20 20V8L14 2Z" fill="#999999" />
+    <path d="M14 2V8H20" fill="#CCCCCC" />
+    <path d="M16 18H8" stroke="white" strokeWidth="2" strokeLinecap="round" />
+    <path d="M16 14H8" stroke="white" strokeWidth="2" strokeLinecap="round" />
+  </svg>
+);
+
+const documents = [
+  {
+    href: itActivitiesDoc,
+    name: 'Виды деятельности в области информационных технологий',
+    ext: '.docx',
+  },
+  {
+    href: trademarkCertDoc,
+    name: 'Свидетельство на товарный знак',
+    ext: '.pdf',
+  },
+  {
+    href: techStackDoc,
+    name: 'Стек используемых технологий и языки программирования',
+    ext: '.docx',
+  },
+];
 
 const ContactsPage = () => {
   return (
@@ -32,21 +63,13 @@ const ContactsPage = () => {
           <a href="mailto:info@iteo.pro" className="contacts-page__link">
             info@iteo.pro
           </a>
-          <a
-            href="tel:+79138396909"
-            className="contacts-page__link contacts-page__link--phone"
-          >
+          <a href="tel:+79138396909" className="contacts-page__link contacts-page__link--phone">
             +7 913 839 6909
           </a>
         </div>
 
         <div className="contacts-page__map-container">
-          <iframe
-            src="https://yandex.ru/map-widget/v1/?um=constructor%3Ab49c49a06fed35ed2aa670949919d56ee84381faf3fad4ebc49abc2f58c5da48&amp;source=constructor"
-            width="100%"
-            height="600"
-            frameBorder="0"
-          ></iframe>
+          <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Ab49c49a06fed35ed2aa670949919d56ee84381faf3fad4ebc49abc2f58c5da48&amp;source=constructor" width="100%" height="600" frameBorder="0"></iframe>
         </div>
       </div>
 
@@ -54,79 +77,17 @@ const ContactsPage = () => {
         <div className="contacts-page__appendix-content">
           <h4 className="contacts-page__appendix-title">ПРИЛОЖЕНИЕ</h4>
           <div className="contacts-page__documents-list">
-            <a href="#" className="contacts-page__document">
-              <div className="contacts-page__document-icon">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M14 2H6C4.9 2 4 2.9 4 4V20C4 21.1 4.9 22 6 22H18C19.1 22 20 21.1 20 20V8L14 2Z"
-                    fill="#999999"
-                  />
-                  <path d="M14 2V8H20" fill="#CCCCCC" />
-                  <path
-                    d="M16 18H8"
-                    stroke="white"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  />
-                  <path
-                    d="M16 14H8"
-                    stroke="white"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              </div>
-              <span className="contacts-page__document-name">
-                Виды деятельности
-                <br />
-                в области информационных
-                <br />
-                технологий.docx
-              </span>
-            </a>
-
-            <a href="#" className="contacts-page__document">
-              <div className="contacts-page__document-icon">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M14 2H6C4.9 2 4 2.9 4 4V20C4 21.1 4.9 22 6 22H18C19.1 22 20 21.1 20 20V8L14 2Z"
-                    fill="#999999"
-                  />
-                  <path d="M14 2V8H20" fill="#CCCCCC" />
-                  <path
-                    d="M16 18H8"
-                    stroke="white"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  />
-                  <path
-                    d="M16 14H8"
-                    stroke="white"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              </div>
-              <span className="contacts-page__document-name">
-                Виды деятельности
-                <br />
-                в области информационных
-                <br />
-                технологий.docx
-              </span>
-            </a>
+            {documents.map((doc, index) => (
+              <a key={index} href={doc.href} download className="contacts-page__document">
+                <div className="contacts-page__document-icon">
+                  <DocumentIcon />
+                </div>
+                <span className="contacts-page__document-name">
+                  {doc.name}
+                  {doc.ext}
+                </span>
+              </a>
+            ))}
           </div>
         </div>
       </div>

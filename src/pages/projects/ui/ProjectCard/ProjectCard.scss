@@ -5,12 +5,12 @@
   display: block;
   text-decoration: none;
   color: inherit;
-  
+
   &__image-wrapper {
     position: relative;
     width: 100%;
     overflow: hidden;
-    border-radius: 16px; /* Modern rounding */
+    border-radius: 32px; /* Modern rounding */
     margin-bottom: 12px;
     height: 433px;
 
@@ -72,7 +72,7 @@
     .project-card__image {
       transform: scale(1.05);
     }
-    
+
     .project-card__overlay {
       opacity: 1;
       backdrop-filter: blur(10px);
