@@ -1,4 +1,5 @@
-@import '@/app/styles/variables';
+@use '@/app/styles/variables' as *;
+@use '@/app/styles/mixins' as *;
 
 .project-card {
   position: relative;
@@ -15,7 +16,8 @@
     height: 433px;
 
     @media (max-width: 768px) {
-      height: 195px;
+      border-radius: 16px;
+      height: 310px;
     }
   }
 
@@ -66,6 +68,14 @@
     font-size: 14px;
     color: #000000; /* Assuming dark text on light background page */
     font-weight: 500;
+  }
+
+  @include mobile {
+    &__title-short {
+      font-size: 18px;
+      color: #000000; /* Assuming dark text on light background page */
+      font-weight: 500;
+    }
   }
 
   &:hover {

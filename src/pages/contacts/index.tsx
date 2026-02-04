@@ -3,6 +3,7 @@ import './ContactsPage.scss';
 import itActivitiesDoc from '@/assets/docs/it_activities.docx';
 import trademarkCertDoc from '@/assets/docs/trademark_certificate.pdf';
 import techStackDoc from '@/assets/docs/tech_stack.docx';
+import logo from '@/assets/contactsLogo.png';
 
 const DocumentIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -89,6 +90,13 @@ const ContactsPage = () => {
               </a>
             ))}
           </div>
+        </div>
+        <div className="contacts-page__logo">
+          <img src={logo} alt="ITEO" />
+          <p>
+            Товарный знак зарегистрирован. <br />
+            №1100861, №1075775, №1074627
+          </p>
         </div>
       </div>
     </div>

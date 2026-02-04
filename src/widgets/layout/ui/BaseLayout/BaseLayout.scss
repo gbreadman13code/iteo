@@ -1,3 +1,5 @@
+@use '@/app/styles/mixins' as *;
+
 .base-layout {
   min-height: 100vh;
   display: flex;
@@ -8,5 +10,9 @@
     display: flex;
     flex-direction: column;
     padding-top: 162px; /* Space for fixed header */
+
+    @include mobile {
+      padding-top: 98px;
+    }
   }
 }

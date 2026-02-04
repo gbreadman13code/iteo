@@ -8,13 +8,7 @@
 
   &__hero {
     position: relative;
-    // min-height: calc(
-    //   100vh - 105px
-    // ); /* Adjust based on header height if needed, or stick to flex 1 */
     flex: 1;
-    // display: flex;
-    // align-items: flex-end; /* Align content to bottom */
-    padding-bottom: 80px;
     overflow: hidden;
 
     @media (max-width: 1200px) {
@@ -23,74 +17,72 @@
   }
 
   &__hero__text {
-    // position: absolute;
-    // bottom: 0px;
-    // left: calc(50% - 930.5px);
-    // width: 370px;
-    // width: 100%;
     position: absolute;
-
-    // left: 100px;
     top: 0px;
     z-index: 1;
-    padding: 40px;
+    padding: 60px 10vw; // Use viewport width for responsive padding
+    width: 100%;
 
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    // align-items: center;
-    // gap: 10px;
-
-    h3 {
-      font-size: 96px;
-      font-weight: 700;
-      line-height: 1;
-      // color: #fff; /* Assuming the image is dark or text needs contrast, wait, design shows white text on user photo? */
-      /* Screenshot: Text is WHITE "Привет" over the dark shirts of the team. */
-      // color: #ffffff;
-      mix-blend-mode: difference; /* Optional trick for visibility */
-      /* Actually look at screenshot: "Привет" is WHITE. The image is B&W. */
-      // color: #ffffff;
-      margin-bottom: 16px;
-      text-align: center;
-
-      @media (max-width: 1600px) {
-        font-size: 72px;
-
-        margin-bottom: 0px;
-      }
-    }
-
-    span {
-      font-size: 24px;
-      display: inline-block;
-      text-align: center;
-
-      // background-color: #ffffff;
-
-      padding: 0 5px;
-    }
+    align-items: flex-start;
+    gap: 40px;
 
     p {
-      // color: #ffffff;
+      color: #121212;
+      flex: 1;
+      max-width: 500px; // Better readability
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
       font-size: 18px;
-      line-height: 1.2;
+      line-height: 1.4;
       font-weight: 400;
-      /* In design text is white because it's over dark shirts */
       text-align: center;
+
+      cursor: default;
+
+      transition: transform 0.3s ease-in-out;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+
+      span {
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 54px;
+      }
+
+      // Optional: Add some hierarchy or specific styling if needed
+      &:last-child {
+        // text-align: right; // Often looks good for balanced headers, but left is safer for readability
+        max-width: 600px;
+        // position: relative;
+
+        // &:before {
+        //   content: '';
+        //   position: absolute;
+        //   top: 0;
+        //   left: 0;
+        //   width: 2px;
+        //   height: 100%;
+        //   background-color: rgba(0, 0, 0, 0.4);
+        //   border-radius: 2px;
+        //   left: -20px;
+        //   // background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
+        //   z-index: -1;
+        // }
+      }
     }
   }
 
   &__team-container {
-    // position: absolute;
-    // top: 0;
-    // left: 0;
     position: relative;
     width: 100%;
-    height: 100%;
-    height: 77vh;
+    height: calc(100vh - 162px);
     z-index: 0;
-    /* Center the group roughly */
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -101,14 +93,18 @@
 
     // background-color: red;
     // background-image: url('@/assets/team-bg.png');
-    // background-position: center 246px;
+    // background-position: center 463px;
     // background-repeat: no-repeat;
 
     &__members {
       transition: transform 0.3s ease-in-out;
 
-      @media (min-width: 2300px) {
+      @media (min-width: 2800px) {
         transform: translateY(0) scale(1.5);
+      }
+
+      @media (max-width: 2800px) {
+        transform: translateY(0) scale(1.2);
       }
 
       @media (max-width: 2300px) {
@@ -129,7 +125,7 @@
     }
 
     @media (max-width: 2300px) {
-      height: 77vh;
+      // height: 77vh;
     }
 
     // @media (max-width: 1800px) {
@@ -190,10 +186,6 @@
     margin-bottom: 16px;
   }
 
-  &__subtitle-block {
-    /* The white badge "Мы опытная ИТ-команда" */
-  }
-
   &__badge {
     background-color: #f0f0f0; /* Light gray/white background */
     color: #000;
@@ -230,6 +222,20 @@
     svg {
       width: 48px;
       height: 48px;
+    }
+  }
+
+  &__slider-container {
+    display: none;
+
+    @media (max-width: 1200px) {
+      display: flex;
+      flex: 1;
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      // background-color: #000; // Assuming dark background like hero, or inherit
     }
   }
 }

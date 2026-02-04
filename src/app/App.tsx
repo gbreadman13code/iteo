@@ -1,6 +1,6 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import { ROUTES } from '@/shared/config/routes';
-import HomePage from '@/pages/home';
+// import HomePage from '@/pages/home';
 import AboutPage from '@/pages/about';
 import ProjectsPage from '@/pages/projects';
 import ProjectDetailsPage from '@/pages/project-details';
@@ -16,7 +16,7 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route element={<BaseLayout />}>
-          <Route path={ROUTES.HOME} element={<HomePage />} />
+          <Route path={ROUTES.HOME} element={<Navigate to={ROUTES.PROJECTS} replace />} />
           <Route path={ROUTES.ABOUT} element={<AboutPage />} />
           <Route path={ROUTES.PROJECTS} element={<ProjectsPage />} />
           <Route path={ROUTES.PROJECT_DETAILS} element={<ProjectDetailsPage />} />
