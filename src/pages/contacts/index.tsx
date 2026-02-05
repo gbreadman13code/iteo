@@ -40,9 +40,13 @@ const ContactsPage = () => {
       <div className="contacts-page__content">
         <div className="contacts-page__section contacts-page__section--legal">
           <p className="contacts-page__company-name">
-            Общество с ограниченной ответственностью «ИТЕО»
+            Общество с ограниченной ответственностью
             <br />
-            Интерактивные решения (ООО «ИТЕО»)
+            «ИТЕО»
+            <br />
+            Интерактивные решения
+            <br />
+            (ООО «ИТЕО»)
           </p>
           <div className="contacts-page__legal-details">
             <p>ОГРН 1142468052979</p>
