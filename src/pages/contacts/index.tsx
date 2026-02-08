@@ -4,6 +4,10 @@ import itActivitiesDoc from '@/assets/docs/it_activities.docx';
 import trademarkCertDoc from '@/assets/docs/trademark_certificate.pdf';
 import techStackDoc from '@/assets/docs/tech_stack.docx';
 import logo from '@/assets/contactsLogo.png';
+import { useEffect, useState } from 'react';
+import vkIcon from './assets/vk.png';
+
+const MOBILE_BREAKPOINT = 1200;
 
 const DocumentIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -16,6 +20,11 @@ const DocumentIcon = () => (
 
 const documents = [
   {
+    href: techStackDoc,
+    name: 'Технологический стек разработки интерактивных решений',
+    ext: '.docx',
+  },
+  {
     href: itActivitiesDoc,
     name: 'Виды деятельности в области информационных технологий',
     ext: '.docx',
@@ -25,14 +34,19 @@ const documents = [
     name: 'Свидетельство на товарный знак',
     ext: '.pdf',
   },
-  {
-    href: techStackDoc,
-    name: 'Стек используемых технологий и языки программирования',
-    ext: '.docx',
-  },
 ];
 
 const ContactsPage = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= MOBILE_BREAKPOINT);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= MOBILE_BREAKPOINT);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <div className="page contacts-page">
       <div className="contacts-page__header-spacer" />
@@ -64,13 +78,24 @@ const ContactsPage = () => {
           <a href="mailto:info@iteo.pro" className="contacts-page__link">
             info@iteo.pro
           </a>
-          <a href="tel:+79138396909" className="contacts-page__link contacts-page__link--phone">
-            +7 913 839 6909
-          </a>
+          <div className="contacts-page__contacts-row">
+            <a href="tel:+79138396909" className="contacts-page__link contacts-page__link--phone">
+              +7 913 839 6909
+            </a>
+            {isMobile && (
+              <a href="https://vk.com/iteo_krsk" target="_blank" className="vk-link">
+                <img src={vkIcon} alt="VK" />
+              </a>
+            )}
+          </div>
         </div>
 
         <div className="contacts-page__map-container">
-          <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Ab49c49a06fed35ed2aa670949919d56ee84381faf3fad4ebc49abc2f58c5da48&amp;source=constructor" width="100%" height="600" frameBorder="0"></iframe>
+          {isMobile ? (
+            <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Ab49c49a06fed35ed2aa670949919d56ee84381faf3fad4ebc49abc2f58c5da48&amp;source=constructor" width="100%" height="600" frameBorder="0"></iframe>
+          ) : (
+            <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Ab49c49a06fed35ed2aa670949919d56ee84381faf3fad4ebc49abc2f58c5da48&amp;source=constructor" width="100%" height="600" frameBorder="0"></iframe>
+          )}
         </div>
       </div>
 
@@ -79,13 +104,13 @@ const ContactsPage = () => {
           <h4 className="contacts-page__appendix-title">ПРИЛОЖЕНИЕ</h4>
           <div className="contacts-page__documents-list">
             {documents.map((doc, index) => (
-              <a key={index} href={doc.href} download className="contacts-page__document">
+              <a key={index} href={doc.href} target="_blank" className="contacts-page__document">
                 <div className="contacts-page__document-icon">
                   <DocumentIcon />
                 </div>
                 <span className="contacts-page__document-name">
                   {doc.name}
-                  {doc.ext}
+                  {/* {doc.ext} */}
                 </span>
               </a>
             ))}

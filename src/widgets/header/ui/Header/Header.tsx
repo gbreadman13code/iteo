@@ -1,22 +1,22 @@
-import { Link, useLocation } from "react-router-dom";
-import { useState } from "react";
-import classNames from "classnames";
-import { ROUTES } from "@/shared/config/routes";
-import "./Header.scss";
-import "./Header.scss";
-import logo from "../../assets/logo.png";
-import logoMobile from "../../assets/logo_mobile.png";
-import vkIcon from "../../assets/vk.png";
+import { Link, useLocation } from 'react-router-dom';
+import { useState } from 'react';
+import classNames from 'classnames';
+import { ROUTES } from '@/shared/config/routes';
+import './Header.scss';
+import './Header.scss';
+import logo from '../../assets/logo.png';
+import logoMobile from '../../assets/logo_mobile.png';
+import vkIcon from '../../assets/vk.png';
 
 export const Header = () => {
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
-    { label: "О НАС", path: ROUTES.ABOUT },
-    { label: "ПРОЕКТЫ", path: ROUTES.PROJECTS },
+    { label: 'О НАС', path: ROUTES.ABOUT },
+    { label: 'ПРОЕКТЫ', path: ROUTES.PROJECTS },
     // { label: 'УСЛУГИ', path: ROUTES.SERVICES },
-    { label: "КОНТАКТЫ", path: ROUTES.CONTACTS },
+    { label: 'КОНТАКТЫ', path: ROUTES.CONTACTS },
   ];
 
   const toggleMenu = () => {
@@ -27,20 +27,17 @@ export const Header = () => {
     setIsMenuOpen(false);
   };
 
-  const currentTitle =
-    navItems.find((item) => item.path === location.pathname)?.label || "";
+  const currentTitle = navItems.find((item) => item.path === location.pathname)?.label || '';
 
   const isMainPage = location.pathname === ROUTES.HOME;
 
-  console.log(isMainPage);
-
   return (
     <header
-      className={classNames("header", {
-        "header--open": isMenuOpen,
-        "header--main": isMainPage,
-      })}
-    >
+      className={classNames('header', {
+        'header--open': isMenuOpen,
+        'header--main': isMainPage,
+      })}>
+      {/* <div></div> */}
       <div className="header__logo">
         <Link to={ROUTES.HOME} onClick={closeMenu}>
           <picture>
@@ -59,8 +56,7 @@ export const Header = () => {
                 to={item.path}
                 className={classNames({
                   active: location.pathname === item.path,
-                })}
-              >
+                })}>
                 {item.label}
               </Link>
             </li>
@@ -76,14 +72,8 @@ export const Header = () => {
 
       {/* Mobile Controls (Visible on mobile) */}
       <div className="header__mobile-controls">
-        {!isMenuOpen && currentTitle && (
-          <span className="header__mobile-title">{currentTitle}</span>
-        )}
-        <button
-          className={classNames("header__burger", { active: isMenuOpen })}
-          onClick={toggleMenu}
-          aria-label="Toggle menu"
-        >
+        {!isMenuOpen && currentTitle && <span className="header__mobile-title">{currentTitle}</span>}
+        <button className={classNames('header__burger', { active: isMenuOpen })} onClick={toggleMenu} aria-label="Toggle menu">
           <span className="header__burger-line"></span>
           <span className="header__burger-line"></span>
           <span className="header__burger-line"></span>
@@ -92,26 +82,29 @@ export const Header = () => {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={classNames("header__mobile-menu", {
-          "header__mobile-menu--open": isMenuOpen,
-        })}
-      >
+        className={classNames('header__mobile-menu', {
+          'header__mobile-menu--open': isMenuOpen,
+        })}>
         <nav className="header__mobile-nav">
           <ul>
             {navItems.map((item) => (
               <li key={item.path}>
                 <Link
                   to={item.path}
-                  className={classNames("mobile-link", {
+                  className={classNames('mobile-link', {
                     active: location.pathname === item.path,
                   })}
-                  onClick={closeMenu}
-                >
+                  onClick={closeMenu}>
                   {item.label.toLowerCase()}
                 </Link>
               </li>
             ))}
           </ul>
+          <div className="header__socials header__socials--mobile">
+            <a href="https://vk.com/iteo_krsk" target="_blank" className="vk-link">
+              <img src={vkIcon} alt="VK" />
+            </a>
+          </div>
         </nav>
       </div>
     </header>

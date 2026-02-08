@@ -25,7 +25,7 @@
     margin-bottom: 40px;
   }
 
-  @media (max-width: 1200px) {
+  @media (max-width: $tablet) {
     height: auto;
     width: 100%;
   }
@@ -58,7 +58,7 @@
       max-width: 800px;
     }
 
-    @media (max-width: 1200px) {
+    @media (max-width: $tablet) {
       display: none;
     }
   }
@@ -97,7 +97,7 @@
     /* In design text is white because it's over dark shirts */
   }
 
-  @media (min-width: 1200px) {
+  @media (min-width: $tablet) {
     display: none;
   }
 }
@@ -114,7 +114,7 @@
     display: none; // Hide scrollbar for Chrome/Safari
   }
 
-  @media (max-width: 1200px) {
+  @media (max-width: $tablet) {
     display: grid;
     grid-template-columns: 1fr 1fr;
     // overflow-x: sunset;
@@ -170,7 +170,7 @@
     font-weight: 400;
   }
 
-  @media (max-width: 1200px) {
+  @media (max-width: $tablet) {
     flex: none;
     width: 100%;
     max-width: unset;

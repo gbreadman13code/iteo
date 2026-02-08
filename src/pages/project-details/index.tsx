@@ -5,6 +5,7 @@ import { Mousewheel, Navigation } from 'swiper/modules';
 import { Swiper as SwiperType } from 'swiper';
 import { projects } from '@/pages/about/model/projectData';
 import { ROUTES } from '@/shared/config/routes';
+import Lightbox from './components/Lightbox/Lightbox';
 
 import 'swiper/swiper-bundle.css';
 import './ProjectDetailsPage.scss';
@@ -14,6 +15,7 @@ const ProjectDetailsPage = () => {
   const navigate = useNavigate();
   const swiperRef = useRef<SwiperType>(null);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [lightbox, setLightbox] = useState({ isOpen: false, initialIndex: 0 });
 
   useEffect(() => {
     const handleResize = () => {
@@ -39,6 +41,14 @@ const ProjectDetailsPage = () => {
 
   const handleNext = () => {
     swiperRef.current?.slideNext();
+  };
+
+  const openLightbox = (index: number) => {
+    setLightbox({ isOpen: true, initialIndex: index });
+  };
+
+  const closeLightbox = () => {
+    setLightbox((prev) => ({ ...prev, isOpen: false }));
   };
 
   // Combine main image and photos for the slider
@@ -99,12 +109,14 @@ const ProjectDetailsPage = () => {
           }}
           className="mySwiper">
           {slides.map((image, index) => (
-            <SwiperSlide key={index}>
+            <SwiperSlide key={index} onClick={() => openLightbox(index)}>
               <img src={image} className="slide-image" alt={`${project.title.main} slide ${index + 1}`} />
             </SwiperSlide>
           ))}
         </Swiper>
       </div>
+
+      <Lightbox isOpen={lightbox.isOpen} images={slides} initialIndex={lightbox.initialIndex} onClose={closeLightbox} />
     </div>
   );
 };

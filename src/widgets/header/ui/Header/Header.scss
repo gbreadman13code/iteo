@@ -1,9 +1,10 @@
 @import '@/app/styles/variables';
 
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  flex: 1;
   // padding: 24px 40px;
   padding-top: 81px;
   padding-left: 108px;
@@ -13,9 +14,14 @@
   top: 0;
   left: 0;
   width: 100%;
+  min-width: 100%;
   z-index: 10;
   background: #fff;
   transition: background 0.3s;
+
+  @media (max-width: $tablet) {
+    grid-template-columns: 1fr 1fr;
+  }
 
   &--open {
     background: transparent; /* Or keep white depending on design, but usually menu covers it */
@@ -30,9 +36,21 @@
   &__nav--desktop,
   &__socials--desktop {
     display: none;
+  }
 
+  &__nav--desktop {
     @media (min-width: $tablet) {
       display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &__socials--desktop {
+    @media (min-width: $tablet) {
+      display: flex;
+      justify-content: end;
+      align-items: center;
     }
   }
 
@@ -42,7 +60,7 @@
 
   &__logo {
     z-index: 20; /* Keep logo above menu overlay */
-    position: relative;
+    // position: absolute;
 
     a {
       display: flex;
@@ -78,7 +96,7 @@
     }
 
     a {
-      font-size: 12px;
+      font-size: 16px;
       font-weight: 500;
       letter-spacing: 0.1em;
       text-transform: uppercase;
@@ -108,6 +126,7 @@
   &__mobile-controls {
     display: flex;
     align-items: center;
+    justify-content: end;
     gap: 16px;
     z-index: 20;
 
@@ -208,6 +227,11 @@
   }
 
   &__mobile-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 120px;
+
     ul {
       display: flex;
       flex-direction: column;

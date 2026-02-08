@@ -3,6 +3,7 @@ import { teamMembers, type TeamMemberData } from '../../model/teamData';
 import './TeamSlider.scss';
 
 export const TeamSlider = () => {
+  const [activeMemberId, setActiveMemberId] = useState<string | null>(null);
   // const sliderRef = useRef<HTMLDivElement>(null);
 
   // useEffect(() => {
@@ -25,31 +26,23 @@ export const TeamSlider = () => {
   //   return () => slider.removeEventListener("wheel", handleWheel);
   // }, []);
 
+  const handleMemberClick = (id: string) => {
+    setActiveMemberId((prevId) => (prevId === id ? null : id));
+  };
+
   return (
     <div className="team-slider-section">
       <div className="team-slider-section__hero__text">
-        {/* <h3>Привет </h3>
-        <span>Мы опытная ИТ-команда</span>
-        <p>
-          точно знаем, как сделать
-          <br />
-          ваши идеи осязаемыми
-        </p> */}
         <p>
           <span>Итео — команда</span> дизайнеров, программистов и&nbsp;техников, <br /> реализующая проекты современных музеев и&nbsp;выставочных стендов от идеи до&nbsp;монтажа на объекте. <br />
           <br /> Опыт создания интерактивных инсталляций с 2014 года. <br /> <br /> В нашем штате 22 квалифицированных специалиста.
         </p>
       </div>
-      {/* <div className="team-slider-section__text">
-        <p>Мы любим и умеем справляться со сложными бизнес-задачами разных компаний и улучшать жизнь людей — с помощью интерактивных решений.</p>
-        <span>Делаем доступным новый уровень восприятия окружающего мира: поможем Вашему бизнесу соответствовать вызовам современности!</span>
-      </div> */}
       <div className="team-slider-section__wrapper" id="team-slider">
         <div className="team-slider-section__container">
-          {/* <h2 className="team-slider-section__title">Команда</h2> */}
           <div className="team-slider">
             {teamMembers.map((member) => (
-              <TeamMemberItem key={member.id} member={member} />
+              <TeamMemberItem key={member.id} member={member} activeMemberId={activeMemberId} onClick={handleMemberClick} />
             ))}
           </div>
         </div>
@@ -60,25 +53,16 @@ export const TeamSlider = () => {
 
 interface TeamMemberItemProps {
   member: TeamMemberData;
+  activeMemberId: string | null;
+  onClick: (id: string) => void;
 }
 
-const TeamMemberItem = ({ member }: TeamMemberItemProps) => {
-  const [isHovered, setIsHovered] = useState(false);
+const TeamMemberItem = ({ member, activeMemberId, onClick }: TeamMemberItemProps) => {
+  const isActive = activeMemberId === member.id;
 
   return (
-    <div
-      className="team-member-item"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      onClick={() => setIsHovered(!isHovered)} // Toggle for mobile
-    >
-      <h3 className="team-member-item__name">
-        <span>{member.name}</span>
-      </h3>
-      <div className="team-member-item__image-container">
-        <img src={isHovered && member.videoSrc ? member.videoSrc : member.portraitSrc || member.bwSrc} alt={member.name} className="team-member-item__image" />
-      </div>
-      <p className="team-member-item__role">{member.role}</p>
+    <div className="team-member-item" onClick={() => onClick(member.id)}>
+      <div className="team-member-item__image-container">{isActive ? <video src={member.videoSrc} autoPlay loop muted playsInline className="team-member-item__image" /> : <img src={member.portraitSrc} alt={member.name} className="team-member-item__image" />}</div>
     </div>
   );
 };
