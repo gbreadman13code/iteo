@@ -1,8 +1,11 @@
 @use '@/app/styles/variables' as *;
 @use '@/app/styles/mixins' as *;
 
+$max-width: 1440px;
+
 .contacts-page {
   display: flex;
+  flex: 1;
   flex-direction: column;
   // min-height: 100vh;
   padding-top: 140px; // Approx height for header space
@@ -16,12 +19,13 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap; // Allow map to wrap to next line
-    padding: 0 40px;
+    // padding: 0 40px;
     margin-bottom: 80px;
     width: 100%;
-    max-width: 1440px;
+    max-width: $max-width;
     margin-left: auto;
     margin-right: auto;
+    flex: 1;
 
     @include mobile {
       flex-direction: column;
@@ -41,7 +45,7 @@
       @include mobile {
         order: 4;
         max-width: 100%;
-        margin-bottom: 60px;
+        margin-bottom: 0px;
 
         // Increase font size for company name on mobile
         .contacts-page__company-name {
@@ -127,21 +131,28 @@
 
   &__map-container {
     width: 100%;
-    background-color: #eaeaea;
+    background: linear-gradient(180deg, #f7f7f7 0%, #f7f7f7 50%, #333 50%, #333 100%);
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 60px; // Spacing from columns on desktop
 
+    iframe {
+      max-width: $max-width;
+      border-radius: 17px;
+    }
+
     @include mobile {
-      order: 3;
-      width: calc(100% + 40px); // Full bleed on mobile (compensate parent padding)
-      margin: 0 -20px 40px -20px;
+      // order: 5;
+      // width: calc(100% + 40px); // Full bleed on mobile (compensate parent padding)
+      // margin: 0 -20px 40px -20px;
       height: 300px; // Fixed height for mobile map
+      margin-top: 20px; // Spacing from columns on desktop
 
       iframe {
         height: 100%;
+        border-radius: 0px;
       }
     }
   }
@@ -157,12 +168,15 @@
   &__appendix {
     background-color: #333; // Dark background
     color: #fff;
-    padding: 60px 40px;
+    padding: 60px 40px 81px 40px;
     width: 100%;
+    display: flex;
+    flex: 1;
+    justify-content: center;
 
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    // justify-content: space-between;
 
     @include mobile {
       padding: 40px 20px;
@@ -170,9 +184,22 @@
     }
   }
 
+  &__appendix-wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: $max-width;
+    // padding: 0 40px;
+
+    @include mobile {
+      padding: 0px;
+    }
+  }
+
   &__appendix-content {
-    max-width: 1440px;
-    margin: 0 auto;
+    max-width: $max-width;
+    // margin: 0 auto;
   }
 
   &__logo {

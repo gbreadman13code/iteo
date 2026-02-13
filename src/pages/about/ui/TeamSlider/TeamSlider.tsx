@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { teamMembers, type TeamMemberData } from '../../model/teamData';
 import './TeamSlider.scss';
+import { TextBlock } from '../TextBlock/TextBlock';
 
 export const TeamSlider = () => {
   const [activeMemberId, setActiveMemberId] = useState<string | null>(null);
@@ -33,11 +34,12 @@ export const TeamSlider = () => {
   return (
     <div className="team-slider-section">
       <div className="team-slider-section__hero__text">
-        <span>Итео</span>
-        <p>
-          команда дизайнеров, программистов и&nbsp;техников, реализующая проекты современных музеев и&nbsp;выставочных стендов от идеи до&nbsp;монтажа на объекте. <br />
-          <br /> <b>Опыт:</b> с 2014 года. <br /> <br /> <b>Штат:</b> 22 человека.
-        </p>
+        <span>ИТЕО — команда программистов дизайнеров и техников.</span>
+        <p>Мы реализуем проекты современных музеев и&nbsp;выставочных стендов: от&nbsp;идеи до&nbsp;монтажа на&nbsp;объекте.</p>
+        <div className="team-slider-section__hero__text__blocks">
+          <TextBlock number={2014} text="год&nbsp;основания&nbsp;компании" />
+          <TextBlock number={22} text="человека&nbsp;в&nbsp;штате" />
+        </div>
       </div>
       <div className="team-slider-section__wrapper" id="team-slider">
         <div className="team-slider-section__container">

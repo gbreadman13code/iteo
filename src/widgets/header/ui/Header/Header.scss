@@ -41,7 +41,7 @@
   &__nav--desktop {
     @media (min-width: $tablet) {
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
     }
   }
@@ -96,7 +96,7 @@
     }
 
     a {
-      font-size: 16px;
+      font-size: clamp(16px, 0.8vw, 28px);
       font-weight: 500;
       letter-spacing: 0.1em;
       text-transform: uppercase;
@@ -104,9 +104,13 @@
       opacity: 0.6;
       transition: opacity 0.2s;
 
-      @media (min-width: 2300px) {
-        font-size: 18px;
-      }
+      // @media (min-width: 2300px) {
+      //   font-size: 18px;
+      // }
+
+      // @media (min-width: 3400px) {
+      //   font-size: 28px;
+      // }
 
       &:hover,
       &.active {

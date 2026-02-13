@@ -49,14 +49,10 @@ const ContactsPage = () => {
 
   return (
     <div className="page contacts-page">
-      <div className="contacts-page__header-spacer" />
-
       <div className="contacts-page__content">
         <div className="contacts-page__section contacts-page__section--legal">
           <p className="contacts-page__company-name">
-            Общество с ограниченной ответственностью «ИТЕО»
-            <br />
-            Интерактивные решения (ООО «ИТЕО»)
+            Общество с ограниченной ответственностью <br /> «ИТЕО» Интерактивные решения <br /> (ООО «ИТЕО»)
           </p>
           <div className="contacts-page__legal-details">
             <p>ОГРН 1142468052979</p>
@@ -89,39 +85,41 @@ const ContactsPage = () => {
             )}
           </div>
         </div>
+      </div>
 
-        <div className="contacts-page__map-container">
-          {isMobile ? (
-            <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Ab49c49a06fed35ed2aa670949919d56ee84381faf3fad4ebc49abc2f58c5da48&amp;source=constructor" width="100%" height="600" frameBorder="0"></iframe>
-          ) : (
-            <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Ab49c49a06fed35ed2aa670949919d56ee84381faf3fad4ebc49abc2f58c5da48&amp;source=constructor" width="100%" height="600" frameBorder="0"></iframe>
-          )}
-        </div>
+      <div className="contacts-page__map-container">
+        {isMobile ? (
+          <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Ab49c49a06fed35ed2aa670949919d56ee84381faf3fad4ebc49abc2f58c5da48&amp;source=constructor" width="100%" height="472" frameBorder="0"></iframe>
+        ) : (
+          <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Ab49c49a06fed35ed2aa670949919d56ee84381faf3fad4ebc49abc2f58c5da48&amp;source=constructor" width="100%" height="472" frameBorder="0"></iframe>
+        )}
       </div>
 
       <div className="contacts-page__appendix">
-        <div className="contacts-page__appendix-content">
-          <h4 className="contacts-page__appendix-title">ПРИЛОЖЕНИЕ</h4>
-          <div className="contacts-page__documents-list">
-            {documents.map((doc, index) => (
-              <a key={index} href={doc.href} target="_blank" className="contacts-page__document">
-                <div className="contacts-page__document-icon">
-                  <DocumentIcon />
-                </div>
-                <span className="contacts-page__document-name">
-                  {doc.name}
-                  {/* {doc.ext} */}
-                </span>
-              </a>
-            ))}
+        <div className="contacts-page__appendix-wrapper">
+          <div className="contacts-page__appendix-content">
+            <h4 className="contacts-page__appendix-title">ПРИЛОЖЕНИЕ</h4>
+            <div className="contacts-page__documents-list">
+              {documents.map((doc, index) => (
+                <a key={index} href={doc.href} target="_blank" className="contacts-page__document">
+                  <div className="contacts-page__document-icon">
+                    <DocumentIcon />
+                  </div>
+                  <span className="contacts-page__document-name">
+                    {doc.name}
+                    {/* {doc.ext} */}
+                  </span>
+                </a>
+              ))}
+            </div>
           </div>
-        </div>
-        <div className="contacts-page__logo">
-          <img src={logo} alt="ITEO" />
-          <p>
-            Товарный знак зарегистрирован. <br />
-            №1100861, №1075775, №1074627
-          </p>
+          <div className="contacts-page__logo">
+            <img src={logo} alt="ITEO" />
+            <p>
+              Товарный знак зарегистрирован. <br />
+              №1100861, №1075775, №1074627
+            </p>
+          </div>
         </div>
       </div>
     </div>

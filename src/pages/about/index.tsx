@@ -2,6 +2,7 @@ import { teamMembers } from './model/teamData';
 import { TeamMember } from './ui/TeamMember/TeamMember';
 import { TeamSlider } from './ui/TeamSlider/TeamSlider';
 import './AboutPage.scss';
+import { TextBlock } from './ui/TextBlock/TextBlock';
 
 const AboutPage = () => {
   // const isScrollingRef = useRef(false);
@@ -76,11 +77,12 @@ const AboutPage = () => {
       <div className="about-page__hero">
         <div className="about-page__team-container">
           <div className="about-page__hero__text">
-            <p>
-              ИТЕО — команда дизайнеров, программистов и&nbsp;техников, реализующая проекты современных музеев и&nbsp;выставочных стендов от&nbsp;идеи до&nbsp;монтажа на&nbsp;объекте. <br /> <b>Опыт:</b> с 2014 года. <br /> <b>Штат:</b> 22 человека.
-            </p>
-            <p>Мы любим и умеем точно решать сложные бизнес-задачи разных компаний и&nbsp;делать лучше жизнь людей - с помощью интерактивных решений.</p>
-            <p>Мы делаем доступным новый уровень восприятия окружающего мира, поможем Вашему бизнесу соответствовать вызовам современности!</p>
+            <div className="about-page__hero__text__blocks">
+              <TextBlock number={2014} text="год&nbsp;основания&nbsp;компании" />
+              <TextBlock number={22} text="человека&nbsp;в&nbsp;штате" />
+            </div>
+            <p>ИТЕО — команда дизайнеров, программистов и&nbsp;техников, реализующая проекты современных музеев и&nbsp;выставочных стендов от&nbsp;идеи до&nbsp;монтажа на&nbsp;объекте.</p>
+            <p>Любим и&nbsp;умеем справляться со&nbsp;сложными задачами. Создаем интерактивные решения, которые улучшают жизнь людей и&nbsp;открывают новый уровень восприятия окружающего мира.</p>
           </div>
           <div className="about-page__team-container__members">
             {teamMembers.map((member) => (

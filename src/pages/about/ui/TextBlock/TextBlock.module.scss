@@ -1,0 +1,27 @@
+@import '@/app/styles/variables';
+
+.textBlock {
+  font-family: 'Bebas Neue', sans-serif;
+  h2 {
+    font-size: clamp(124px, 5vw, 230px);
+    font-weight: 700;
+    line-height: 1;
+    color: #121212;
+  }
+
+  p {
+    font-size: clamp(18px, 1vw, 84px);
+    color: #121212;
+    word-break: normal;
+  }
+
+  @media (max-width: $tablet) {
+    h2 {
+      font-size: 94px;
+    }
+
+    p {
+      font-size: 16px;
+    }
+  }
+}
