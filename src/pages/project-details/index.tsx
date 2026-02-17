@@ -61,14 +61,13 @@ const ProjectDetailsPage = () => {
         <div />
 
         <div className="project-details-page__content">
-          <div className="project-details-page__title">{project.title.main}</div>
-          <div className="project-details-page__subtitle">{project.title.subtitle}</div>
-
-          <div className="project-details-page__description">{project.description}</div>
-
+          <div className="project-details-page__title" dangerouslySetInnerHTML={{__html: project.title.main}} />
+          <div className="project-details-page__subtitle" dangerouslySetInnerHTML={{__html: project.title.subtitle}} />
+          <div className="project-details-page__description" dangerouslySetInnerHTML={{ __html: project.description }} />
+          <span className='project-details-page__iteo'>Участие ИТЕО</span>
           <ul className="project-details-page__list">
             {project.list.map((item, index) => (
-              <li key={index}>{item}</li>
+              <li dangerouslySetInnerHTML={{__html: item}} key={index} />
             ))}
           </ul>
         </div>

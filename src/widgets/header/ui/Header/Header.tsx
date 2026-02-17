@@ -13,10 +13,10 @@ export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
-    { label: 'О НАС', path: ROUTES.ABOUT },
-    { label: 'ПРОЕКТЫ', path: ROUTES.PROJECTS },
+    { label: 'О нас', path: ROUTES.ABOUT },
+    { label: 'Проекты', path: ROUTES.PROJECTS },
     // { label: 'УСЛУГИ', path: ROUTES.SERVICES },
-    { label: 'КОНТАКТЫ', path: ROUTES.CONTACTS },
+    { label: 'Контакты', path: ROUTES.CONTACTS },
   ];
 
   const toggleMenu = () => {

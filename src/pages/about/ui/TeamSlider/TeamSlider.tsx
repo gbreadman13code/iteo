@@ -34,7 +34,7 @@ export const TeamSlider = () => {
   return (
     <div className="team-slider-section">
       <div className="team-slider-section__hero__text">
-        <span>ИТЕО — команда программистов дизайнеров и техников.</span>
+        <span>ИТЕО — команда программистов,<br/> дизайнеров и техников.</span>
         <p>Мы реализуем проекты современных музеев и&nbsp;выставочных стендов: от&nbsp;идеи до&nbsp;монтажа на&nbsp;объекте.</p>
         <div className="team-slider-section__hero__text__blocks">
           <TextBlock number={2014} text="год&nbsp;основания&nbsp;компании" />

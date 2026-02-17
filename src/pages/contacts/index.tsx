@@ -26,12 +26,12 @@ const documents = [
   },
   {
     href: itActivitiesDoc,
-    name: 'Виды деятельности в области информационных технологий',
+    name: 'Виды деятельности<br/>в области информационных технологий',
     ext: '.docx',
   },
   {
     href: trademarkCertDoc,
-    name: 'Свидетельство на товарный знак',
+    name: 'Свидетельство<br/>на товарный знак',
     ext: '.pdf',
   },
 ];
@@ -55,8 +55,8 @@ const ContactsPage = () => {
             Общество с ограниченной ответственностью <br /> «ИТЕО» Интерактивные решения <br /> (ООО «ИТЕО»)
           </p>
           <div className="contacts-page__legal-details">
-            <p>ОГРН 1142468052979</p>
-            <p>ИНН 2466276329 КПП 246601001</p>
+            <p><b>ОГРН</b> 1142468052979</p>
+            <p><b>ИНН</b> 2466276329 КПП 246601001</p>
           </div>
         </div>
 
@@ -80,7 +80,7 @@ const ContactsPage = () => {
             </a>
             {isMobile && (
               <a href="https://vk.com/iteo_krsk" target="_blank" className="vk-link">
-                <img src={vkIcon} alt="VK" />
+                <img src={vkIcon} alt="VK" className='vk_logo'/>
               </a>
             )}
           </div>
@@ -105,10 +105,7 @@ const ContactsPage = () => {
                   <div className="contacts-page__document-icon">
                     <DocumentIcon />
                   </div>
-                  <span className="contacts-page__document-name">
-                    {doc.name}
-                    {/* {doc.ext} */}
-                  </span>
+                  <span className="contacts-page__document-name" dangerouslySetInnerHTML={{__html: doc.name}} />
                 </a>
               ))}
             </div>
