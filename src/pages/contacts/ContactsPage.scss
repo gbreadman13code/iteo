@@ -79,6 +79,10 @@ $max-width: 1440px;
         align-items: center;
         justify-content: space-between;
         gap: 8px;
+
+        img {
+          width: 52px;
+        }
       }
 
       @include mobile {
