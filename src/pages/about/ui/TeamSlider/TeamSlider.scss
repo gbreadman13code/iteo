@@ -137,6 +137,16 @@
   flex-direction: column;
   text-align: left;
 
+  /* Убирает синее/серое выделение при tap на мобильных */
+  -webkit-tap-highlight-color: transparent;
+  
+  /* Убирает выделение текста/элемента */
+  user-select: none;
+  -webkit-user-select: none;
+  
+  /* Убирает outline при фокусе (если фото кликабельны) */
+  outline: none;
+
   &:first-child {
     // margin-left: 108px;
   }
