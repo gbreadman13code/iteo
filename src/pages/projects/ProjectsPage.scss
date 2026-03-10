@@ -1,7 +1,7 @@
 @import '@/app/styles/variables';
 
 .projects-page {
-  padding: 40px $side-padding;
+  padding: clamp(40px, 2.1vw, 70px) $side-padding;
   // margin: 0 auto;
 
   @media (max-width: 768px) {
@@ -10,15 +10,14 @@
   }
 
   h1 {
-    font-size: 48px;
-    margin-bottom: 40px;
+    margin-bottom: clamp(40px, 2.1vw, 70px);
     font-family: inherit;
   }
 
   &__grid {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
-    gap: 40px;
+    gap: clamp(40px, 2.1vw, 70px);
 
     @media (max-width: 768px) {
       grid-template-columns: 1fr;

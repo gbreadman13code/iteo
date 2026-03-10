@@ -67,9 +67,9 @@
   }
 
   &__title-short {
-    font-size: 14px;
     color: #000000; /* Assuming dark text on light background page */
     font-weight: 500;
+    font-size: clamp(14px, 1vw, 84px);
   }
 
   @include mobile {
