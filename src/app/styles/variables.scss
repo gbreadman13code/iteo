@@ -9,3 +9,6 @@ $font-family-main: 'Roboto', sans-serif;
 // Breakpoints if needed
 $tablet: 1200px;
 $desktop: 1024px;
+
+// Layout
+$side-padding: clamp(4px, 5.6vw, 108px);

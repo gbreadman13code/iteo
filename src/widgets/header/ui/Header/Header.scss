@@ -7,8 +7,10 @@
   flex: 1;
   // padding: 24px 40px;
   padding-top: 81px;
-  padding-left: 108px;
-  padding-right: 108px;
+  // padding-left: 108px;
+  // padding-right: 108px;
+  padding-left: $side-padding;
+  padding-right: $side-padding;
   padding-bottom: 24px;
   position: fixed; /* Often headers in such designs are absolute/fixed */
   top: 0;

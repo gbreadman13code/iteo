@@ -1,4 +1,6 @@
 @use '@/app/styles/mixins' as *;
+@use '@/app/styles/variables' as *;
+
 
 .project-details-page {
   height: calc(100vh - 162px);
@@ -6,6 +8,10 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   background-color: #f4f4f4;
+  // padding-left: $side-padding;
+  // padding-right: $side-padding;
+    padding-left: $side-padding;
+    padding-right: $side-padding;
 
   &__iteo {
     display: inline-block;
@@ -21,7 +27,11 @@
   }
 
   &__left {
-    padding: 40px 40px 40px 105px;
+    // padding: 40px 40px 40px 105px;
+    padding-top: 40px;
+    padding-right: 40px;
+    padding-bottom: 40px;
+    padding-left: 0;
     display: flex;
     flex-direction: column;
     justify-content: top;
@@ -181,9 +191,13 @@
   }
 
   &__right {
-    height: 100vh;
+    // height: 100vh;
     overflow: hidden;
-    padding: 40px 105px 40px 40px;
+    // padding: 40px 105px 40px 40px;
+    padding-left: 40px;
+    padding-right: 0;
+    padding-top: 40px;
+    // padding-bottom: 40px;
     box-sizing: border-box;
   }
 
