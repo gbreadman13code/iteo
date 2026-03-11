@@ -22,6 +22,7 @@
     z-index: 1;
     // padding: 60px $side-padding;
     display: grid;
+    gap: 40px;
     grid-template-columns: repeat(3, 1fr);
     // width: 100%;
     padding-left: $side-padding;
@@ -44,8 +45,8 @@
       // display: flex;
       // flex-direction: column;
       align-items: flex-start;
-      gap: 16px;
-      font-size: clamp(18px, 1vw, 46px);
+      gap: clamp(16px, 0.85vw, 28px);
+      font-size: clamp(18px, 1.45vw, 46px);
       line-height: 1.4;
       font-weight: 400;
       text-align: left;
@@ -55,7 +56,7 @@
       span {
         font-weight: 700;
         text-transform: uppercase;
-        font-size: 54px;
+        font-size: clamp(54px, 3.6vw, 108px);
       }
     }
   }
@@ -151,8 +152,11 @@
     &__black-line {
       position: absolute;
       bottom: 0;
+      // left: calc(50% - clamp(800px, 41.7vw, 1400px));
       left: calc(50% - 800px);
+      // width: clamp(1600px, 83.3vw, 2800px);
       width: 1600px;
+      // height: clamp(100px, 0.5vw, 75px);
       height: 100px;
       background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1), rgba(0, 0, 0, 1));
 
@@ -161,13 +165,13 @@
   }
 
   &__content {
-    margin-left: 40px;
+    margin-left: clamp(40px, 2.1vw, 70px);
     z-index: 1;
-    margin-bottom: 40px;
+    margin-bottom: clamp(40px, 2.1vw, 70px);
   }
 
   &__title {
-    font-size: 96px;
+    font-size: clamp(96px, 6.4vw, 192px);
     font-weight: 700;
     line-height: 1;
     color: #fff; /* Assuming the image is dark or text needs contrast, wait, design shows white text on user photo? */
@@ -176,22 +180,22 @@
     mix-blend-mode: difference; /* Optional trick for visibility */
     /* Actually look at screenshot: "Привет" is WHITE. The image is B&W. */
     color: #ffffff;
-    margin-bottom: 16px;
+    margin-bottom: clamp(16px, 0.85vw, 28px);
   }
 
   &__badge {
-    background-color: #f0f0f0; /* Light gray/white background */
+    background-color: #f0f0f0;
     color: #000;
-    padding: 4px 8px;
-    font-size: 14px;
+    padding: clamp(4px, 0.2vw, 7px) clamp(8px, 0.4vw, 14px);
+    font-size: clamp(14px, 1.15vw, 34px);
     font-weight: 500;
     display: inline-block;
-    margin-bottom: 8px;
+    margin-bottom: clamp(8px, 0.4vw, 14px);
   }
 
   &__description {
     color: #ffffff;
-    font-size: 18px;
+    font-size: clamp(18px, 1.45vw, 44px);
     line-height: 1.2;
     font-weight: 400;
     /* In design text is white because it's over dark shirts */
@@ -199,7 +203,7 @@
 
   &__scroll-down {
     position: absolute;
-    bottom: 24px;
+    bottom: clamp(24px, 1.25vw, 42px);
     left: 50%;
     transform: translateX(-50%);
     background: none;
@@ -213,8 +217,8 @@
     }
 
     svg {
-      width: 48px;
-      height: 48px;
+      width: clamp(48px, 2.5vw, 84px);
+      height: clamp(48px, 2.5vw, 84px);
     }
   }
 
