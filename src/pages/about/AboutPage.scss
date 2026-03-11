@@ -64,7 +64,7 @@
   &__team-container {
     position: relative;
     width: 100%;
-    height: calc(100vh - 162px);
+    height: calc(100vh - clamp(97px, 8.4vw, 249px));
     z-index: 0;
     display: flex;
     justify-content: center;
@@ -81,41 +81,23 @@
 
     &__members {
       transition: transform 0.3s ease-in-out;
-
       width: 100%;
-      // height: 100%;
 
-      @media (min-width: 3840px) {
-        transform: translateY(0) scale(1.6);
-      }
+      // Width-based scale (stepped via media queries)
+      --w-scale: 1;
+      // Height-based scale (dynamic, 1.0 at 1080px height)
+      --h-scale: tan(atan2(100vh, 1400px));
+      // Use whichever is smaller
+      transform: translateY(0) scale(clamp(0.4, min(var(--w-scale), var(--h-scale)), 1.9));
 
-      @media (max-width: 3840px) {
-        transform: translateY(0) scale(1.9);
-      }
-
-      @media (max-width: 3200px) {
-        transform: translateY(0) scale(1.6);
-      }
-
-      @media (max-width: 2800px) {
-        transform: translateY(0) scale(1.2);
-      }
-
-      @media (max-width: 2300px) {
-        transform: translateY(0) scale(1);
-      }
-
-      @media (max-width: 1800px) {
-        transform: translateY(0) scale(0.8);
-      }
-
-      @media (max-width: 1600px) {
-        transform: translateY(0) scale(0.7);
-      }
-
-      @media (max-width: 1400px) {
-        transform: translateY(0) scale(0.6);
-      }
+      @media (min-width: 3840px) { --w-scale: 1.6; }
+      @media (max-width: 3840px) { --w-scale: 1.9; }
+      @media (max-width: 3200px) { --w-scale: 1.6; }
+      @media (max-width: 2800px) { --w-scale: 1.2; }
+      @media (max-width: 2300px) { --w-scale: 1; }
+      @media (max-width: 1800px) { --w-scale: 0.8; }
+      @media (max-width: 1600px) { --w-scale: 0.7; }
+      @media (max-width: 1400px) { --w-scale: 0.6; }
     }
 
     @media (max-width: 2300px) {

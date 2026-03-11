@@ -8,7 +8,7 @@
   flex: 1;
   flex-direction: column;
   // min-height: 100vh;
-  padding-top: clamp(140px, 7.3vw, 245px);
+  padding-top: clamp(97px, 4vw, 249px);
   background-color: #f7f7f7; // Light background based on top of screenshot
 
   @include mobile {

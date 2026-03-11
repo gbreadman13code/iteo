@@ -6,12 +6,12 @@
   grid-template-columns: 1fr 1fr 1fr;
   flex: 1;
   // padding: 24px 40px;
-  padding-top: 81px;
+  padding-top: clamp(36px, 4.2vw, 140px);
   // padding-left: 108px;
   // padding-right: 108px;
   padding-left: $side-padding;
   padding-right: $side-padding;
-  padding-bottom: 24px;
+  padding-bottom: clamp(12px, 1.25vw, 42px);
   position: fixed; /* Often headers in such designs are absolute/fixed */
   top: 0;
   left: 0;
@@ -39,7 +39,7 @@
   &__socials--desktop {
     display: none;
     img {
-      width: clamp(60px, 3.1vw, 100px);
+      width: clamp(40px, 3.1vw, 100px);
     }
   }
 
@@ -70,23 +70,24 @@
     a {
       display: flex;
       align-items: center;
-      gap: clamp(12px, 0.6vw, 20px);
+      gap: clamp(8px, 0.6vw, 20px);
       color: $color-text-main;
 
       picture,
       img {
         display: block;
+        width: clamp(120px, 10vw, 320px);
       }
     }
 
     &-bold {
-      font-size: clamp(32px, 1.7vw, 56px);
+      font-size: clamp(24px, 1.7vw, 56px);
       font-weight: 700;
       letter-spacing: -0.02em;
     }
 
     &-text {
-      font-size: clamp(10px, 0.5vw, 18px);
+      font-size: clamp(8px, 0.5vw, 18px);
       line-height: 1.2;
       font-weight: 500;
       letter-spacing: 0.1em;
@@ -104,11 +105,11 @@
   &__nav {
     ul {
       display: flex;
-      gap: clamp(32px, 1.7vw, 56px);
+      gap: clamp(20px, 1.7vw, 56px);
     }
 
     a {
-      font-size: clamp(16px, 0.8vw, 28px);
+      font-size: clamp(12px, 0.8vw, 28px);
       font-weight: 500;
       letter-spacing: 0.1em;
       text-transform: uppercase;
