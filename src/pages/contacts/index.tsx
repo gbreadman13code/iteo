@@ -1,20 +1,136 @@
 import './ContactsPage.scss';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import vkIcon from './assets/vk.png';
 import ContactsAppendix from './ContactsAppendix';
 
 const MOBILE_BREAKPOINT = 1200;
 
+const MAP_CENTER = [56.015020, 92.854024] as const;
+
+const getZoom = () => {
+  const w = window.innerWidth;
+  if (w >= 3840) return 19;
+  if (w >= 3200) return 18;
+  if (w >= 2800) return 18;
+  if (w >= 2300) return 18;
+  if (w >= 1700) return 18;
+  return 19;
+};
+
 const ContactsPage = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= MOBILE_BREAKPOINT);
+  const mapRef = useRef<HTMLDivElement>(null);
+  const mapInstanceRef = useRef<any>(null);
 
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= MOBILE_BREAKPOINT);
+
+      if (mapInstanceRef.current) {
+        mapInstanceRef.current.setZoom(getZoom(), { duration: 300 });
+      }
     };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (!mapRef.current) return;
+
+    const ymaps = (window as any).ymaps;
+    if (!ymaps) return;
+
+    ymaps.ready(() => {
+      if (!mapRef.current || mapInstanceRef.current) return;
+
+      const map = new ymaps.Map(mapRef.current, {
+        center: MAP_CENTER,
+        zoom: getZoom(),
+        controls: ['zoomControl'],
+      });
+
+      const placemark = new ymaps.Placemark(MAP_CENTER, {
+        balloonContent: 'ООО «ИТЕО»<br>ул. Красной Армии, 10к3, офис 302',
+        iconCaption: "ИТЕО",
+        balloonContentHeader: "ИТЕО" 
+      });
+      map.geoObjects.add(placemark);
+
+      // Стрелка сверху-слева (L-образная: вниз, затем вправо к офису)
+      const arrowTopLeft1 = new ymaps.Polyline(
+        [
+          [56.015183, 92.853568], // начало — сверху
+          [56.014937, 92.853607], // вниз
+          [56.014923, 92.853609], // вправо к офису
+          [56.014925, 92.853675], // вправо к офису
+          [56.014953, 92.853670], // вправо к офису
+          [56.014942, 92.853664], // вправо к офису
+          // [56.014881058156604, 92.85355956823506], // вправо к офису
+        ],
+        {},
+        {
+          strokeColor: '#FF0000',
+          strokeWidth: 3,
+          strokeOpacity: 0.8,
+          hasArrow: true,
+        }
+      );
+            const arrowTopLeft2 = new ymaps.Polyline(
+        [
+          [56.014943, 92.853680],
+          [56.014953, 92.853670], // начало — сверху
+        ],
+        {},
+        {
+          strokeColor: '#FF0000',
+          strokeWidth: 3,
+          strokeOpacity: 0.8,
+          hasArrow: true,
+        }
+      );
+      map.geoObjects.add(arrowTopLeft1);
+      map.geoObjects.add(arrowTopLeft2);
+
+      const arrowBottomRight1 = new ymaps.Polyline(
+        [
+          [56.014677, 92.855017],
+          [56.014974, 92.854251],
+          [56.014964, 92.854259],
+        ],
+        {},
+        {
+          strokeColor: '#FF0000',
+          strokeWidth: 3,
+          strokeOpacity: 0.8,
+          hasArrow: true,
+        }
+      );
+      const arrowBottomRight2 = new ymaps.Polyline(
+        [
+          [56.014974, 92.854251],
+          [56.014973, 92.854274],
+        ],
+        {},
+        {
+          strokeColor: '#FF0000',
+          strokeWidth: 3,
+          strokeOpacity: 0.8,
+          hasArrow: true,
+        }
+      );
+      map.geoObjects.add(arrowBottomRight1);
+      map.geoObjects.add(arrowBottomRight2);
+
+      mapInstanceRef.current = map;
+    });
+
+    return () => {
+      if (mapInstanceRef.current) {
+        mapInstanceRef.current.destroy();
+        mapInstanceRef.current = null;
+      }
+    };
   }, []);
 
   return (
@@ -58,11 +174,7 @@ const ContactsPage = () => {
       </div>
 
       <div className="contacts-page__map-container">
-        {isMobile ? (
-          <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Ab49c49a06fed35ed2aa670949919d56ee84381faf3fad4ebc49abc2f58c5da48&amp;source=constructor" width="100%" height="472" frameBorder="0"></iframe>
-        ) : (
-          <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Ab49c49a06fed35ed2aa670949919d56ee84381faf3fad4ebc49abc2f58c5da48&amp;source=constructor" width="100%" height="472" frameBorder="0"></iframe>
-        )}
+        <div ref={mapRef} className="contacts-page__map" />
       </div>
 
       <ContactsAppendix />

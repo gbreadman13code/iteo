@@ -143,21 +143,18 @@
     align-items: center;
     margin-top: clamp(30px, 3.1vw, 60px);
 
-    iframe {
-      padding-left: $side-padding;
-      padding-right: $side-padding;
+    .contacts-page__map {
+      width: calc(100% - #{$side-padding} * 2);
       border-radius: clamp(17px, 0.9vw, 30px);
       height: clamp(472px, 28vw, 950px);
     }
 
     @include mobile {
-      // order: 5;
-      // width: calc(100% + 40px); // Full bleed on mobile (compensate parent padding)
-      // margin: 0 -20px 40px -20px;
-      height: 300px; // Fixed height for mobile map
-      margin-top: 20px; // Spacing from columns on desktop
+      height: 300px;
+      margin-top: 20px;
 
-      iframe {
+      .contacts-page__map {
+        width: 100%;
         height: 100%;
         border-radius: 0px;
       }
