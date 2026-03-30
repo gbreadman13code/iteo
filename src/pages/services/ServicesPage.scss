@@ -73,34 +73,31 @@
 
   &__card {
     position: relative;
+    background-color: #1e1e1e;
     border-radius: clamp(12px, 1vw, 20px);
     overflow: hidden;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 
-    &:hover .services-page__card-overlay {
-      background: rgba(37, 99, 235, 0.75);
+    &:hover {
+      background-color: #1a4fc4;
     }
 
     &:hover .services-page__card-img {
-      transform: scale(1.05);
+      transform: scale(1.06) translateY(-4px);
     }
   }
 
   &__card-img {
     position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
+    bottom: -5%;
+    right: -2%;
+    height: 72%;
+    width: auto;
+    object-fit: contain;
+    object-position: bottom right;
     transition: transform 0.4s ease;
-  }
-
-  &__card-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(160deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.35) 60%, rgba(0, 0, 0, 0.1) 100%);
-    transition: background 0.3s ease;
+    pointer-events: none;
   }
 
   &__card-content {

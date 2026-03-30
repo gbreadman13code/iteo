@@ -14,7 +14,6 @@ const ServicesPage = () => {
                 className="services-page__card-img"
               />
             )}
-            <div className="services-page__card-overlay" />
             <div className="services-page__card-content">
               <div className="services-page__card-body">
                 <h2 className="services-page__card-title">{service.title}</h2>
