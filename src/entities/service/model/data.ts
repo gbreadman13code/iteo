@@ -35,7 +35,7 @@ export const services: Service[] = [
   {
     id: '4',
     title: 'Frontend и Backend -поддержка',
-    description: 'Поддержка и развитие веб-приложений любой сложности.',
+    description: 'Поддержка и развитие веб-приложений под ваши задачи.',
     price: 'от 50 000 ₽/мес',
     image: imgKeyboard,
   },
@@ -56,7 +56,7 @@ export const services: Service[] = [
   {
     id: '7',
     title: 'Систем контроля и управления доступом',
-    description: 'Проектирование и внедрение СКУД для любых объектов.',
+    description: 'Проектирование и внедрение СКУД под ваш объект.',
     price: 'от 80 000 ₽',
     image: imgShield,
   },
