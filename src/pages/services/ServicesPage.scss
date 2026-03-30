@@ -2,16 +2,19 @@
 @use '@/app/styles/mixins' as *;
 
 .services-page {
+  flex: 1;
+  min-height: 0;
   padding: clamp(16px, 1.5vw, 32px) $side-padding;
-  height: calc(100vh - clamp(56px, 5vw, 80px));
-  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 
   &__grid {
+    flex: 1;
+    min-height: 0;
     display: grid;
     grid-template-columns: 2fr 1fr 2fr 1fr;
     grid-template-rows: repeat(3, 1fr);
     gap: clamp(8px, 0.8vw, 16px);
-    height: 100%;
 
     // 1. Музеи и выставки — col 1, rows 1–2
     .services-page__card:nth-child(1) {
@@ -95,7 +98,6 @@
   }
 
   @include mobile {
-    height: auto;
     padding: 16px 16px 24px;
 
     &__grid {
