@@ -117,6 +117,9 @@
     p {
       margin: 4px 0;
     }
+    .legal-details-main {
+      margin-top: clamp(16px, 0.85vw, 28px);
+    }
   }
 
   &__link {

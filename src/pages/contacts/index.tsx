@@ -143,6 +143,7 @@ const ContactsPage = () => {
           <div className="contacts-page__legal-details">
             <p><b>ОГРН</b> 1142468052979</p>
             <p><b>ИНН</b> 2466276329 <b>КПП</b> 246601001</p>
+            <p className='legal-details-main'><b>Основной вид экономической деятельности</b><br/> 62.01 Разработка компьютерного программного обеспечения</p>
           </div>
         </div>
 
