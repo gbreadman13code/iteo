@@ -15,7 +15,7 @@ export const Header = () => {
   const navItems = [
     { label: 'О нас', path: ROUTES.ABOUT },
     { label: 'Проекты', path: ROUTES.PROJECTS },
-    // { label: 'УСЛУГИ', path: ROUTES.SERVICES },
+    { label: 'Услуги', path: ROUTES.SERVICES },
     { label: 'Контакты', path: ROUTES.CONTACTS },
   ];
 
