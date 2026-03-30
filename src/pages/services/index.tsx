@@ -7,7 +7,15 @@ const ServicesPage = () => {
       <div className="services-page__grid">
         {services.map((service) => (
           <div key={service.id} className="services-page__card">
-            <h2 className="services-page__card-title">{service.title}</h2>
+            <div className="services-page__card-body">
+              <h2 className="services-page__card-title">{service.title}</h2>
+              {service.description && (
+                <p className="services-page__card-desc">{service.description}</p>
+              )}
+            </div>
+            {service.price && (
+              <span className="services-page__card-price">{service.price}</span>
+            )}
           </div>
         ))}
       </div>

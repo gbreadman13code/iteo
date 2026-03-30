@@ -16,6 +16,7 @@ const ServiceDetailsPage = () => {
       <h1>{service.title}</h1>
       <div className="service-content">
         <p className="description">{service.description}</p>
+        {service.price && <p className="price">{service.price}</p>}
         
         {/* Placeholder for service specific content */}
         <div className="placeholder-block">
