@@ -3,6 +3,8 @@
 
 
 .project-details-page {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch; // плавная прокрутка на iOS
   height: calc(100vh - 162px);
   overflow-x: hidden;
   display: grid;
@@ -239,6 +241,7 @@
 
     &__content {
       margin-top: 24px;
+      padding-bottom: 8rem;
     }
 
     &__title {
