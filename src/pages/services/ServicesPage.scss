@@ -21,79 +21,86 @@
       grid-column: 1;
       grid-row: 1 / 3;
 
-      .services-page__card-price {
-        background-color: rgba(0, 0, 0, 0.45);
-      }
+      .services-page__card-img { height: 72%; bottom: -1%; right: -10%; }
+      .services-page__card-price { background-color: rgba(0, 0, 0, 0.45); }
     }
 
     // 2. VR/AR — col 2, row 1
     .services-page__card:nth-child(2) {
       grid-column: 2;
       grid-row: 1;
+
+      .services-page__card-img { height: 71%; bottom: -3%; right: -8%; }
+      // .services-page__card-price { background-color: rgba(0, 0, 0, 0.45); }
     }
 
     // 3. 3D-моделирование — col 3, row 1
     .services-page__card:nth-child(3) {
       grid-column: 3;
       grid-row: 1;
+
+      .services-page__card-img { height: 72%; bottom: -8%; right: -0%; }
+      // .services-page__card-price { background-color: rgba(0, 0, 0, 0.45); }
     }
 
     // 4. Frontend и Backend — col 4, row 1
     .services-page__card:nth-child(4) {
       grid-column: 4;
       grid-row: 1;
+
+      .services-page__card-img { height: 50%; bottom: 0; right: -1%; max-width: 75%; }
+      .services-page__card-price { background-color: rgba(0, 0, 0, 0.45); }
     }
 
     // 5. Аренда сенсорного — col 1, row 3
     .services-page__card:nth-child(5) {
       grid-column: 1;
       grid-row: 3;
+
+      .services-page__card-img { height: 72%; bottom: -3%; right: 3%; }
+      // .services-page__card-price { background-color: rgba(0, 0, 0, 0.45); }
     }
 
     // 6. Подбор оборудования — col 2, rows 2–3
     .services-page__card:nth-child(6) {
       grid-column: 2;
       grid-row: 2 / 4;
+
+      .services-page__card-img { height: 72%; bottom: -8%; right: -3%; }
+      // .services-page__card-price { background-color: rgba(0, 0, 0, 0.45); }
     }
 
     // 7. Систем контроля — col 3, row 2
     .services-page__card:nth-child(7) {
       grid-column: 3;
       grid-row: 2;
+
+      .services-page__card-img { height: 82%; bottom: -8%; right: 7%; }
+      // .services-page__card-price { background-color: rgba(0, 0, 0, 0.45); }
     }
 
     // 8. Разработка сайтов — col 3, row 3
     .services-page__card:nth-child(8) {
       grid-column: 3;
       grid-row: 3;
+
+      .services-page__card-img { height: 72%; bottom: -8%; right: 6%; }
+      // .services-page__card-price { background-color: rgba(0, 0, 0, 0.45); }
     }
 
     // 9. Виртуальные 3D туры — col 4, rows 2–3
     .services-page__card:nth-child(9) {
       grid-column: 4;
       grid-row: 2 / 4;
-    }
 
-    // Frontend — клавиатура чуть выше, чтобы вся входила
-    .services-page__card:nth-child(4) {
-      .services-page__card-img {
-        height: 50%;
-        max-width: 75%;
-        bottom: 0;
-      }
-    }
-
-    // Виртуальные 3D туры — изображение по правому краю, чуть крупнее
-    .services-page__card:nth-child(9) {
       .services-page__card-img {
         height: 47%;
-        max-width: none;
-        top: 50%;
+        top: 53%;
         right: -5%;
-        left: unset;
         bottom: unset;
         transform: translateY(-50%);
       }
+      // .services-page__card-price { background-color: rgba(0, 0, 0, 0.45); }
 
       &:hover .services-page__card-img {
         transform: translateY(-50%) scale(1.05);
