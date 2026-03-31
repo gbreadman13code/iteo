@@ -2,7 +2,6 @@ import './ContactsPage.scss';
 
 import { useEffect, useRef, useState } from 'react';
 import vkIcon from './assets/vk.png';
-import ContactsAppendix from './ContactsAppendix';
 
 const MOBILE_BREAKPOINT = 1200;
 
@@ -178,7 +177,6 @@ const ContactsPage = () => {
         <div ref={mapRef} className="contacts-page__map" />
       </div>
 
-      <ContactsAppendix />
     </div>
   );
 };

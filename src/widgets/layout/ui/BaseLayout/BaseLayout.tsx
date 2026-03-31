@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import { Header } from '@/widgets/header/ui/Header/Header';
-// // import { Footer } from '@/widgets/footer/ui/Footer/Footer';
+import { ContactsAppendix } from '@/widgets/contacts-appendix';
 import './BaseLayout.scss';
 
 export const BaseLayout = () => {
@@ -10,7 +10,7 @@ export const BaseLayout = () => {
       <main className="base-layout__main">
         <Outlet />
       </main>
-      {/* <Footer /> */}
+      <ContactsAppendix />
     </div>
   );
 };
