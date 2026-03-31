@@ -1,0 +1,62 @@
+---
+- name: Build and push Docker image
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars:
+    project_root: "{{ playbook_dir }}/../.."
+    image_name: iteo-2026
+    image_tag: latest
+    registry: registry.iteo.pro
+
+  tasks:
+    - name: Build Docker image
+      command: >
+        docker build
+        -t {{ image_name }}:{{ image_tag }}
+        -f infra/Docker/Dockerfile
+        .
+      args:
+        chdir: "{{ project_root }}"
+
+    - name: Tag image for registry
+      command: >
+        docker tag
+        {{ image_name }}:{{ image_tag }}
+        {{ registry }}/{{ image_name }}:{{ image_tag }}
+
+    - name: Push image to registry
+      command: >
+        docker push {{ registry }}/{{ image_name }}:{{ image_tag }}
+
+- name: Deploy Helm chart to Kubernetes
+  hosts: iteo-kub
+  gather_facts: false
+
+  vars:
+    helm_chart_src: "{{ playbook_dir }}/../../infra/Helm/"
+    helm_chart_dest: /tmp/iteo-helm
+    release_name: iteo2026
+    namespace: iteo2026
+
+  tasks:
+    - name: Copy Helm chart to remote host
+      synchronize:
+        src: "{{ helm_chart_src }}"
+        dest: "{{ helm_chart_dest }}"
+        delete: true
+        recursive: true
+
+    - name: Upgrade Helm release
+      command: >
+        microk8s helm upgrade
+        {{ release_name }}
+        {{ helm_chart_dest }}
+        -n {{ namespace }}
+
+    - name: Restart deployment to pull new image
+      command: >
+        microk8s kubectl rollout restart
+        deployment/iteo-2026-deployment
+        -n {{ namespace }}

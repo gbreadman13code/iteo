@@ -14,7 +14,7 @@
         chdir: "{{ project_root }}"
 
 - name: Deploy frontend to server
-  hosts: iteo
+  hosts: iteo-server
   gather_facts: false
 
   vars:
