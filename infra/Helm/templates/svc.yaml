@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: iteo-2026-svc
+  namespace: {{ .Release.Namespace }}
+spec:
+  selector:
+    app: iteo-2026
+  ports:
+    - port: 80
+      targetPort: 80
+  type: NodePort

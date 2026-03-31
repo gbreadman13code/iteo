@@ -1,0 +1,5 @@
+apiVersion: v2
+name: iteo-2026
+description: Helm chart for deploying iteo-2026 service
+type: application
+version: 0.1.0

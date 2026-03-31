@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: iteo-2026-deployment
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: iteo-2026
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: iteo-2026
+  template:
+    metadata:
+      labels:
+        app: iteo-2026
+    spec:
+      containers:
+        - name: iteo-2026-container
+          image: registry.iteo.pro/iteo-2026:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 400m
+              memory: 512Mi

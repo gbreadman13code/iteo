@@ -1,0 +1,45 @@
+---
+- name: Build frontend locally
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars:
+    project_root: "{{ playbook_dir }}/../.."
+
+  tasks:
+    - name: npm run build
+      command: npm run build
+      args:
+        chdir: "{{ project_root }}"
+
+- name: Deploy frontend to server
+  hosts: iteo
+  gather_facts: false
+
+  vars:
+    local_dist: "{{ playbook_dir }}/../../dist/"
+    remote_upload: /app/dist
+    remote_front: /app/iteo/front
+    compose_dir: /app/iteo/iteo-back
+
+  tasks:
+    - name: Upload dist to /app/dist
+      synchronize:
+        src: "{{ local_dist }}"
+        dest: "{{ remote_upload }}"
+        delete: true
+        recursive: true
+
+    - name: Remove old frontend
+      file:
+        path: "{{ remote_front }}"
+        state: absent
+
+    - name: Move dist -> front
+      command: mv {{ remote_upload }} {{ remote_front }}
+
+    - name: Restart docker compose
+      command: docker compose restart
+      args:
+        chdir: "{{ compose_dir }}"
