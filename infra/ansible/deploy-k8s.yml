@@ -38,7 +38,7 @@
     helm_chart_src: "{{ playbook_dir }}/../../infra/Helm/"
     helm_chart_dest: /tmp/iteo-helm
     release_name: iteo2026
-    namespace: iteo2026
+    k8s_namespace: iteo2026
 
   tasks:
     - name: Copy Helm chart to remote host
@@ -53,10 +53,10 @@
         microk8s helm upgrade
         {{ release_name }}
         {{ helm_chart_dest }}
-        -n {{ namespace }}
+        -n {{ k8s_namespace }}
 
     - name: Restart deployment to pull new image
       command: >
         microk8s kubectl rollout restart
         deployment/iteo-2026-deployment
-        -n {{ namespace }}
+        -n {{ k8s_namespace }}

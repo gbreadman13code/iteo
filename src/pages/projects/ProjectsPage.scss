@@ -3,6 +3,7 @@
 .projects-page {
   padding: clamp(40px, 2.1vw, 70px) $side-padding;
   // margin: 0 auto;
+  margin-bottom: 6rem;
 
   @media (max-width: 768px) {
     margin: 0;
