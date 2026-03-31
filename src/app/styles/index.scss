@@ -24,11 +24,3 @@ a {
 ul {
   list-style: none;
 }
-
-html:has(.projects-page),
-html:has(.contacts-page) {
-  scrollbar-width: none;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-}
