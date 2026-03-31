@@ -10,10 +10,12 @@ import ContactsPage from '@/pages/contacts';
 import './app.scss'; // Optional local styles if needed
 
 import { BaseLayout } from '@/widgets/layout';
+import { ScrollToTop } from '@/shared/ui/ScrollToTop/ScrollToTop';
 
 const App = () => {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route element={<BaseLayout />}>
           <Route path={ROUTES.HOME} element={<Navigate to={ROUTES.PROJECTS} replace />} />
