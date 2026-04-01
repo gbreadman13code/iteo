@@ -24,46 +24,6 @@ const Lightbox = ({ isOpen, images, initialIndex, onClose }: LightboxProps) => {
     }
   }, [isOpen, initialIndex]);
 
-  // Handle fullscreen mode
-  useEffect(() => {
-    const enterFullscreen = async () => {
-      try {
-        if (document.documentElement.requestFullscreen) {
-          await document.documentElement.requestFullscreen();
-        }
-      } catch (err) {
-        console.warn('Fullscreen request failed:', err);
-      }
-    };
-
-    const exitFullscreen = async () => {
-      try {
-        if (document.fullscreenElement && document.exitFullscreen) {
-          await document.exitFullscreen();
-        }
-      } catch (err) {
-        console.warn('Exit fullscreen failed:', err);
-      }
-    };
-
-    const handleFullscreenChange = () => {
-      if (!document.fullscreenElement && isOpen) {
-        onClose();
-      }
-    };
-
-    if (isOpen) {
-      enterFullscreen();
-      document.addEventListener('fullscreenchange', handleFullscreenChange);
-    } else {
-      exitFullscreen();
-    }
-
-    return () => {
-      document.removeEventListener('fullscreenchange', handleFullscreenChange);
-    };
-  }, [isOpen, onClose]);
-
   // Handle ESC key to close
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
