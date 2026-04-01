@@ -84,14 +84,14 @@
 
   &__card {
     position: relative;
-    background-color: #1e1e1e;
+    background: linear-gradient(to top right, #1d1d1b 23%, #666666 100%);
     border-radius: clamp(12px, 1vw, 20px);
     overflow: hidden;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background 0.3s ease;
 
     &:hover {
-      background-color: #1a4fc4;
+      background: linear-gradient(to top right, #2d4876 19%, #9cd5f7 100%);
     }
 
     &:hover .services-page__card-img {
@@ -174,49 +174,49 @@
 
       // 1. Музеи и выставки
       .services-page__card:nth-child(1) {
-        .services-page__card-img { height: 73%; bottom: -5%; right: -3%; }
+        .services-page__card-img { height: 139px; bottom: -10px; right: -3%; }
       }
 
       // 2. VR/AR
       .services-page__card:nth-child(2) {
-        .services-page__card-img { height: 93%; bottom: -5%; right: -5%; }
+        .services-page__card-img { height: 177px; bottom: -10px; right: -5%; }
       }
 
       // 3. 3D-моделирование
       .services-page__card:nth-child(3) {
-        .services-page__card-img { height: 82%; bottom: -5%; right: 0%; }
+        .services-page__card-img { height: 156px; bottom: -10px; right: 0%; }
       }
 
       // 4. Frontend и Backend
       .services-page__card:nth-child(4) {
-        .services-page__card-img { height: 50%; bottom: -5%; right: -3%; }
+        .services-page__card-img { height: 95px; bottom: -10px; right: -3%; }
       }
 
       // 5. Аренда сенсорного
       .services-page__card:nth-child(5) {
-        .services-page__card-img { height: 80%; bottom: -5%; right: -3%; }
+        .services-page__card-img { height: 152px; bottom: -10px; right: -3%; }
       }
 
       // 6. Подбор оборудования
       .services-page__card:nth-child(6) {
-        .services-page__card-img { height: 95%; bottom: -5%; right: 10%; }
+        .services-page__card-img { height: 181px; bottom: -10px; right: 10%; }
       }
 
       // 7. Систем контроля
       .services-page__card:nth-child(7) {
-        .services-page__card-img { height: 95%; bottom: -5%; right: 2%; }
+        .services-page__card-img { height: 181px; bottom: -10px; right: 2%; }
       }
 
       // 8. Разработка сайтов
       .services-page__card:nth-child(8) {
-        .services-page__card-img { height: 70%; bottom: 10%; right: 2%; }
+        .services-page__card-img { height: 133px; bottom: 19px; right: 2%; }
       }
 
       // 9. Виртуальные 3D туры
       .services-page__card:nth-child(9) {
         .services-page__card-img {
-          height: 80%;
-          top: 50%;
+          height: 152px;
+          top: 95px;
           right: 0%;
           bottom: unset;
           transform: translateY(-50%);

@@ -18,7 +18,7 @@
   &__grid {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
-    gap: clamp(40px, 2.1vw, 70px);
+    gap: clamp(40px, 1vw, 20px);
 
     @media (max-width: 768px) {
       grid-template-columns: 1fr;

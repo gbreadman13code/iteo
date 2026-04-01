@@ -6,7 +6,7 @@
   grid-template-columns: 1fr 1fr 1fr;
   flex: 1;
   // padding: 24px 40px;
-  padding-top: max(env(safe-area-inset-top, 0px), clamp(36px, 4.2vw, 140px));
+  padding-top: max(env(safe-area-inset-top, 0px), clamp(26px, 4.2vw, 80px));
   // padding-left: 108px;
   // padding-right: 108px;
   padding-left: $side-padding;
@@ -76,7 +76,7 @@
       picture,
       img {
         display: block;
-        width: clamp(120px, 15vw, 320px);
+        width: clamp(120px, 12vw, 320px);
       }
     }
 
@@ -135,7 +135,11 @@
   &__socials {
     .vk-link {
       font-weight: 700;
+      // width: clamp(24px, 1vw, 56px);
       /* Placeholder styling */
+      img {
+        width: clamp(24px, 2.5vw, 200px);
+      }
     }
   }
 
